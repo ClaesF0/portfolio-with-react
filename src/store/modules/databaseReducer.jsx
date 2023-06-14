@@ -19,17 +19,85 @@ const SupabaseContent = () => {
 
     fetchData();
   }, []);
-
   return (
-    <div>
-      {projects.map((project) => (
+    <>
+      {projects.map((project, index) => (
         <div key={project.id}>
-          <h2>{project.title}</h2>
-          {/* Render other project details */}
+          <p className="text-xl">{project.title}</p>
+          <div
+            className={`my-4 mx-auto md:flex ${
+              index % 2 === 0 ? "md:flex-row " : "md:flex-row-reverse"
+            }`}
+          >
+            <img
+              src={project.preview_img}
+              alt={`Image for the project ${project.title}`}
+              className="md:w-1/2 h-auto"
+            />
+            <div className="text-sm md:w-1/2 pb-2 px-2 text-left">
+              <p>{project.executive_summary}</p>
+              Tech used:
+              <p>{project.tech_stack}</p>
+              <span className="inline-flex p-1">
+                <a href={project.repo_url} target="_blank" rel="noreferrer">
+                  <img
+                    src=".\src\assets\github.svg"
+                    alt={`Code for the project ${project.title}`}
+                    className="w-6"
+                  />
+                </a>
+                <a href={project.deployed_url} target="_blank" rel="noreferrer">
+                  <img
+                    src=".\src\assets\globe-solid.svg"
+                    alt={`Site for the project ${project.title}`}
+                    className="w-6"
+                  />
+                </a>
+              </span>
+            </div>
+          </div>
         </div>
       ))}
-    </div>
+    </>
   );
+
+  //  return (
+  //    <>
+  //      {projects.map((project) => (
+  //        <div key={project.id} className="my-1 mx-auto">
+  //          <p className="text-xl">{project.title}</p>
+  //          <div className="border-2 border-red-500 block md:inline-flex m-1">
+  //            <img
+  //              src={project.preview_img}
+  //              alt={`Image for the project ${project.title}`}
+  //              className="md:w-1/2 h-auto"
+  //            />
+  //            <div className="text-sm md:w-1/2 pb-2 ">
+  //              <p>{project.executive_summary}</p>
+  //              Tech used:
+  //              <p>{project.tech_stack}</p>
+  //              <span className="inline-flex p-1">
+  //                <a href={project.repo_url} target="_blank" rel="noreferrer">
+  //                  <img
+  //                    src=".\src\assets\github.svg"
+  //                    alt={`Code for the project ${project.title}`}
+  //                    className="w-6"
+  //                  />
+  //                </a>
+  //                <a href={project.deployed_url} target="_blank" rel="noreferrer">
+  //                  <img
+  //                    src=".\src\assets\globe-solid.svg"
+  //                    alt={`Site for the project ${project.title}`}
+  //                    className="w-6"
+  //                  />
+  //                </a>
+  //              </span>
+  //            </div>
+  //          </div>
+  //        </div>
+  //      ))}
+  //    </>
+  //  );
 };
 
 export default SupabaseContent;
