@@ -1,10 +1,10 @@
 import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
 import "./App.css";
 import "./index.css";
 import SupabaseContent from "./store/modules/databaseReducer";
 import Profile from "./pages/Profile";
+import Navbar from "./components/Navbar";
+import About from "./pages/Testimonials";
 
 function App() {
   return (
@@ -12,6 +12,7 @@ function App() {
       <div>
         <Profile />
         <SupabaseContent />
+        <About />
       </div>
     </>
   );

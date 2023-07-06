@@ -1,9 +1,9 @@
 import { createClient } from "@supabase/supabase-js";
 
-console.log(
-  "import.meta.env.VITE_CLAES_PORTFOLIO_SUPABASE_KEY",
-  import.meta.env.VITE_CLAES_PORTFOLIO_SUPABASE_KEY
-);
+//console.log(
+//  "import.meta.env.VITE_CLAES_PORTFOLIO_SUPABASE_KEY",
+//  import.meta.env.VITE_CLAES_PORTFOLIO_SUPABASE_KEY
+//);
 
 const supabaseKey = import.meta.env.VITE_CLAES_PORTFOLIO_SUPABASE_KEY;
 const supabaseUrl = import.meta.env.VITE_CLAES_PORTFOLIO_SUPABASE_URL;
