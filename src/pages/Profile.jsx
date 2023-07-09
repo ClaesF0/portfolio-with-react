@@ -1,5 +1,8 @@
 import React from "react";
 import "../../src/App.css";
+import profileImage from "../assets/NewProjectwithHat.png";
+import CVClaesFolkestadNorsk from "../assets/Claes_Folkestad_Norsk.pdf";
+import CVClaesFolkestadEnglish from "../assets/Claes_Folkestad_English.pdf";
 
 function age() {
   const today = new Date();
@@ -11,6 +14,8 @@ function age() {
   }
   return age;
 }
+
+function resumeDownloadLanguage() {}
 
 const Profile = () => {
   return (
@@ -45,9 +50,8 @@ const Profile = () => {
               target="_blank"
               rel="noreferrer"
             >
-              <u style={{ color: "var(--var-orange)" }}>Resume💾</u>
+              <u style={{ color: "var(--var-orange)" }}>Resume</u>
             </a>
-            🇬🇧   🇳🇴
             <br />
             <br />
             Front End {""}
@@ -66,8 +70,8 @@ const Profile = () => {
 
           <div className="image-overlay"></div>
           <img
-            src="./src/assets/NewProjectwithHat.png"
-            alt=""
+            src={profileImage}
+            alt="Somewhat crudely cropped picture of Claes smiling, but with an added funny stick-hand raising a simplistic tophat."
             className="profile-image bg-[#90d7ff] m-2 w-[200px] md:w-[300px] h-auto mx-auto"
           />
           <div

@@ -1,6 +1,19 @@
 import React, { useEffect, useState } from "react";
 import supabase from "../../../supabase";
 import Profile from "../../pages/Profile";
+import WordpressLogo from "../../assets/wordpress_logo.svg";
+import FileZillaLogo from "../../assets/FileZilla_logo.svg.png";
+import FlywheelLogo from "../../assets/flywheel_logo.svg";
+import PHPLogo from "../../assets/PHP-logo.svg.png";
+import HTMLLogo from "../../assets/HTML5_logo_and_wordmark.svg.png";
+import CSSLogo from "../../assets/CSS3_logo_and_wordmark.svg.png";
+import TailwindCSSLogo from "../../assets/Tailwind_CSS_logo.svg.png";
+import woocommerceLogo from "../../assets/woo-logo.png";
+import ViteLogo from "../../assets/vite.svg";
+import ReactLogo from "../../assets/react.svg";
+import HeadlessWordPressCMSLogo from "../../assets/HeadlessWordpress.psd.svg";
+import vanillaJSLogo from "../../assets/JavaScript-Logo.svg";
+import wpPluginsLogo from "../../assets/wordpressplugins.psd.svg";
 
 const SupabaseContent = () => {
   const [projects, setProjects] = useState([]);
@@ -26,6 +39,22 @@ const SupabaseContent = () => {
   }, []);
 
   const technologyIcons = {
+    Wordpress: WordpressLogo,
+    FileZilla: FileZillaLogo,
+    Flywheel: FlywheelLogo,
+    PHP: PHPLogo,
+    HTML: HTMLLogo,
+    CSS: CSSLogo,
+    TailwindCSS: TailwindCSSLogo,
+    woocommerce: woocommerceLogo,
+    Vite: ViteLogo,
+    React: ReactLogo,
+    "Headless WordPress CMS": HeadlessWordPressCMSLogo,
+    "vanilla JS": vanillaJSLogo,
+    "wp plugins": wpPluginsLogo,
+  };
+  /*
+  const technologyIcons = {
     Wordpress: "./src/assets/wordpress_logo.svg",
     FileZilla: "./src/assets/FileZilla_logo.svg.png",
     Flywheel: "./src/assets/flywheel_logo.svg",
@@ -40,6 +69,7 @@ const SupabaseContent = () => {
     "vanilla JS": "./src/assets/JavaScript-Logo.svg",
     "wp plugins": "./src/assets/wordpressplugins.psd.svg",
   };
+*/
 
   const toggleSummary = () => {
     setShowLongSummary((prevState) => !prevState);
@@ -71,7 +101,7 @@ const SupabaseContent = () => {
                 <img
                   key={index}
                   src={icon}
-                  alt={`Icon for ${technology}`}
+                  alt={`${technology}`}
                   className="h-8 m-1 inline-block"
                 />
               );
