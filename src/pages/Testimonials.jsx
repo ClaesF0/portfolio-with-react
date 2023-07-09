@@ -62,7 +62,7 @@ const About = () => {
           <>
             <div className="text-lg text-gray-700">
               <br />
-              <div className="text-md text-gray-700 ">
+              <div className="text-md text-gray-700 p-6 ">
                 {testimonials.map((testimonial) => (
                   <div key={testimonial.id}>
                     <span className="font-bold italic">
@@ -70,7 +70,7 @@ const About = () => {
                     </span>
                     <br />
 
-                    <span className="font-medium  ">
+                    <span className="font-medium pl-4">
                       - 
                       <a
                         href={testimonial.author_linkedin}

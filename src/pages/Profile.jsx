@@ -15,42 +15,53 @@ function age() {
 const Profile = () => {
   return (
     <>
-      <div className=" ">
-        <div className="image-container bg-gray-700 block md:flex justify-evenly  mx-auto py-6">
+      <div className="container ">
+        <div className="image-container block md:flex justify-around   mx-auto py-6 ">
           <div
-            className="full-width-container text-md md:text-2xl font-bold text-[#90d7ff]"
-            style={{ fontFamily: "Consolas" }}
+            className="container text-md md:text-xl font-bold"
+            style={{ color: "var(--var-black)" }}
           >
-            Claes Folkestad, {age()} years old.
-            <br /> Oslo based aspiring Frontend Developer.
+            Claes Folkestad, {age()}, Aspiring Developer
             <br />
-            <a
-              href="https://www.noroff.no/en/studies/vocational-school/front-end-development"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <u>Noroff</u>
-            </a>{" "}
-            class of 2023, class captain. 93/100 GPA final year.
-            <br /> Pragmatic and creative. Teamplayer and people person.
-            <br /> <br />
-            RESUME
-            <br /> <br />
+            Oslo, Norway ||{" "}
             <a
               href="https://www.linkedin.com/in/claes-folkestad-824115224/"
               target="_blank"
               rel="noreferrer"
             >
-              LinkedIn
-            </a>
-            <br /> <br />
+              <u style={{ color: "var(--var-orange)" }}>LinkedIn</u>
+            </a>{" "}
+            |{" "}
             <a
               href="https://github.com/ClaesF0"
               target="_blank"
               rel="noreferrer"
             >
-              GitHub
+              <u style={{ color: "var(--var-orange)" }}>GitHub</u>
             </a>
+            |{" "}
+            <a
+              href="https://www.linkedin.com/in/claes-folkestad-824115224/details/experience/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <u style={{ color: "var(--var-orange)" }}>Resume💾</u>
+            </a>
+            🇬🇧   🇳🇴
+            <br />
+            <br />
+            Front End {""}
+            <a
+              href="https://www.noroff.no/en/studies/vocational-school/front-end-development"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <u style={{ color: "var(--var-orange)" }}>Noroff</u>
+            </a>{" "}
+            2021-23 | Class Captain | 93/100 GPA final year.
+            <br /> Pragmatic and creative. Teamplayer and people person.
+            <br /> <br />
+            <br /> <br />
           </div>
 
           <div className="image-overlay"></div>

@@ -11,7 +11,9 @@ const SupabaseContent = () => {
     async function fetchData() {
       const { data, error } = await supabase.from("Portfolio_data").select("*");
       console.log("supabase projects fetch ok");
-      console.log("data", data);
+      console.log("data kommer under");
+      console.log(data);
+      console.log("hei dette er en string text");
 
       if (error) {
         console.error("Error fetching data:", error);
@@ -91,7 +93,7 @@ const SupabaseContent = () => {
           <>
             {projects.map((project, index) => (
               <div key={project.id}>
-                <p className="text-2xl mt-6">{project.title}</p>
+                <p className="text-2xl mt-6 text-center">{project.title}</p>
                 <div
                   className={`mt-2 mx-auto md:flex ${
                     index % 2 === 0 ? "md:flex-row " : "md:flex-row-reverse"
@@ -113,8 +115,8 @@ const SupabaseContent = () => {
                   <div
                     className={`mx-auto text-sm md:w-1/2 p-6 text-left ${
                       index % 2 === 0
-                        ? "text-[#f8f8f8] text-xs bg-blue-600"
-                        : "text-gray-800  text-xs bg-[#f8f8f8]"
+                        ? "text-[#181415] text-xs bg-[#f8f8f8] md:bg-[#90d7ff]"
+                        : "text-[#181415]  text-xs bg-[#f8f8f8]"
                     }`}
                   >
                     <div className="mb-4">
