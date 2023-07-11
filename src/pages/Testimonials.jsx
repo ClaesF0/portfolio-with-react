@@ -53,45 +53,57 @@ const About = () => {
           className="text-2xl w-full text-gray-700 bg-[#90d7ff] py-2"
         >
           {showTestimonials ? (
-            <p className="text-2xl">Testimonials ▲</p>
+            <p className="text-2xl">References ▲</p>
           ) : (
-            <p className="text-2xl">Testimonials ▼</p>
+            <p className="text-2xl">References ▼</p>
           )}
         </button>
         {showTestimonials && (
           <>
             <div className="text-lg text-gray-700">
               <br />
-              <div className="text-md text-gray-700 p-6 ">
+              <div className="text-md text-gray-700 p-6 inline-flex flex-wrap justify-evenly ">
                 {testimonials.map((testimonial) => (
-                  <div key={testimonial.id}>
-                    <span className="font-bold italic">
-                      "{testimonial.testimonial_text}"
-                    </span>
-                    <br />
-
-                    <span className="font-medium pl-4">
-                      - 
+                  <div
+                    key={testimonial.id}
+                    className="border-2 border-b-8 border-r-8 m-4 p-4 md:w-[400px]"
+                  >
+                    <img
+                      src={testimonial.author_image}
+                      alt=""
+                      className="w-[150px] float-left rounded-full grayscale mx-4"
+                    />
+                    <span className="font-medium text-sm  ">
                       <a
                         href={testimonial.author_linkedin}
                         target="_blank"
                         rel="noreferrer"
-                        className="text-blue-500 underline"
+                        className="font-semibold"
                       >
-                        {testimonial.author_name}
+                        <p>{testimonial.author_name}</p>
                       </a>
-                      , {testimonial.author_role},{" "}
-                      <a
-                        href={testimonial.workplace_url}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="text-blue-500 underline"
-                      >
-                        {testimonial.workplace}
-                      </a>
+                      <p className="capitalize ">
+                        {testimonial.author_role}
+                        <a
+                          href={testimonial.workplace_url}
+                          target="_blank"
+                          rel="noreferrer"
+                          className=""
+                        >
+                          <p className="">{testimonial.workplace}</p>
+                        </a>{" "}
+                      </p>
                     </span>
                     <br />
                     <br />
+                    <br />
+                    <span className="font-medium text-sm italic ">
+                      <p className=" block mt-8">
+                        "{testimonial.testimonial_text}"
+                      </p>
+                    </span>
+                    <br />
+
                     {testimonial.testimonial}
                     <br />
                     <br />

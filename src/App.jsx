@@ -10,6 +10,7 @@ function App() {
   return (
     <>
       <div>
+        <Navbar />
         <Profile />
         <SupabaseContent />
         <About />

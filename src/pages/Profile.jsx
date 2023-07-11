@@ -1,6 +1,8 @@
 import React from "react";
 import "../../src/App.css";
-import profileImage from "../assets/NewProjectwithHat.png";
+//import profileImage from "../assets/NewProjectwithHat.png";
+//import profileImage from "../assets/claesfolkestad.jpg";
+import profileImage from "../assets/claesfolkestad.png";
 import CVClaesFolkestadNorsk from "../assets/Claes_Folkestad_Norsk.pdf";
 import CVClaesFolkestadEnglish from "../assets/Claes_Folkestad_English.pdf";
 
@@ -20,13 +22,12 @@ function resumeDownloadLanguage() {}
 const Profile = () => {
   return (
     <>
-      <div className="container ">
+      <div id="about" className="container">
         <div className="image-container block md:flex justify-around   mx-auto py-6 ">
-          <div
-            className="container text-md md:text-xl font-bold"
-            style={{ color: "var(--var-black)" }}
-          >
-            Claes Folkestad, {age()}, Aspiring Developer
+          <div className="container text-md md:text-xl">
+            <p className="font-bold">
+              Claes Folkestad, {age()}, Front End Graduate
+            </p>
             <br />
             Oslo, Norway ||{" "}
             <a
@@ -34,7 +35,7 @@ const Profile = () => {
               target="_blank"
               rel="noreferrer"
             >
-              <u style={{ color: "var(--var-orange)" }}>LinkedIn</u>
+              LinkedIn
             </a>{" "}
             |{" "}
             <a
@@ -42,7 +43,7 @@ const Profile = () => {
               target="_blank"
               rel="noreferrer"
             >
-              <u style={{ color: "var(--var-orange)" }}>GitHub</u>
+              GitHub
             </a>
             |{" "}
             <a
@@ -50,7 +51,7 @@ const Profile = () => {
               target="_blank"
               rel="noreferrer"
             >
-              <u style={{ color: "var(--var-orange)" }}>Resume</u>
+              Resume
             </a>
             <br />
             <br />
@@ -60,7 +61,7 @@ const Profile = () => {
               target="_blank"
               rel="noreferrer"
             >
-              <u style={{ color: "var(--var-orange)" }}>Noroff</u>
+              Noroff
             </a>{" "}
             2021-23 | Class Captain | 93/100 GPA final year.
             <br /> Pragmatic and creative. Teamplayer and people person.

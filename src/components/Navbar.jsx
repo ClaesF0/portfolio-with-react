@@ -1,43 +1,53 @@
 import React from "react";
+import linkedin from "../assets/LinkedIn_logo_initials.png";
+import github from "../assets/GitHub-logo.png";
 
 const Navbar = () => {
   return (
     <>
-      <div className="flex justify-between items-center bg-gray-700 w-full h-16">
-        <div className="flex justify-between items-center w-1/2">
-          <div className="text-2xl font-bold text-[#90d7ff] ml-4">About</div>
-          <div className="text-2xl font-bold text-[#90d7ff] ml-4">Projects</div>
-          <div className="text-2xl font-bold text-[#90d7ff] ml-4">Contact</div>
+      <div className="container text-sm md:text-lg flex justify-between items-center bg-gray-200 h-16 sticky top-0 z-20">
+        <div className="">
+          <a
+            href="
+                #about"
+          >
+            About
+          </a>
         </div>
-        <div className="flex justify-between items-center w-1/2">
-          <div className="text-2xl font-bold text-[#90d7ff] mr-4">
-            <a
-              href="
-                https://www.linkedin.com/in/claes-folkestad-0b1b1b1b1/"
-              target="_blank"
-              rel="noreferrer"
-            >
-              LinkedIn
-            </a>
-          </div>
-          <div className="text-2xl font-bold text-[#90d7ff] mr-4">
-            <a
-              href="github.com/claesfolkestad"
-              target="_blank"
-              rel="noreferrer"
-            >
-              GitHub
-            </a>
-          </div>
-          <div className="text-2xl font-bold text-[#90d7ff] mr-4">
-            <a
-              href="https://www.instagram.com/claesfolkestad/"
-              target="_blank"
-              rel="noreferrer"
-            >
-              Instagram
-            </a>
-          </div>
+        <div className="">
+          <a
+            href="
+                #projects"
+          >
+            Projects
+          </a>
+        </div>
+        <div className="">
+          <a
+            href="
+                #"
+          >
+            Contact
+          </a>
+        </div>
+        <div className="">
+          <a
+            href="
+            https://www.linkedin.com/in/claes-folkestad-824115224/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <img style={{ height: "40px" }} src={linkedin} alt="" />
+          </a>
+        </div>
+        <div className="">
+          <a
+            href="https://www.github.com/claesF0"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <img style={{ height: "40px" }} src={github} alt="" />
+          </a>
         </div>
       </div>
     </>

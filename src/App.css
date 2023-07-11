@@ -1,7 +1,19 @@
 :root {
   --var-orange: #e0644c;
   --var-blue: #90d7ff;
+  --var-dark-blue: #38bdf8;
+  --var-green: #8a8f81;
   --var-black: #181415;
+}
+
+/*
+p {
+  color: var(--var-black);
+}
+*/
+
+a {
+  -webkit-text-fill-color: var(--var-dark-blue);
 }
 
 .full-width-container {
