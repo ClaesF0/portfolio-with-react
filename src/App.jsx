@@ -5,6 +5,7 @@ import SupabaseContent from "./store/modules/databaseReducer";
 import Profile from "./pages/Profile";
 import Navbar from "./components/Navbar";
 import About from "./pages/Testimonials";
+import Contact from "./pages/Contact";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Profile />
         <SupabaseContent />
         <About />
+        <Contact />
       </div>
     </>
   );

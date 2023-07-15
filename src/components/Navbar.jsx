@@ -25,7 +25,7 @@ const Navbar = () => {
         <div className="">
           <a
             href="
-                #"
+                #contact"
           >
             Contact
           </a>

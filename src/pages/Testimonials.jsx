@@ -62,18 +62,18 @@ const About = () => {
           <>
             <div className="text-lg text-gray-700">
               <br />
-              <div className="text-md text-gray-700 p-6 inline-flex flex-wrap justify-evenly ">
+              <div className="text-md text-gray-700 md:p-6 inline-flex flex-wrap justify-evenly ">
                 {testimonials.map((testimonial) => (
                   <div
                     key={testimonial.id}
-                    className="border-2 border-b-8 border-r-8 m-4 p-4 md:w-[400px]"
+                    className="rounded-lg border-2 border-b-8 border-r-8 p-2 my-2 md:m-4 md:p-4 h-fit md:h-auto w-[300px] md:w-[400px]"
                   >
                     <img
                       src={testimonial.author_image}
                       alt=""
-                      className="w-[150px] float-left rounded-full grayscale mx-4"
+                      className="w-[100px] md:w-[150px] mr-1 float-left rounded-full grayscale "
                     />
-                    <span className="font-medium text-sm  ">
+                    <span className="font-medium text-xs md:text-sm  ">
                       <a
                         href={testimonial.author_linkedin}
                         target="_blank"
@@ -98,15 +98,10 @@ const About = () => {
                     <br />
                     <br />
                     <span className="font-medium text-sm italic ">
-                      <p className=" block mt-8">
+                      <p className=" block mt-2">
                         "{testimonial.testimonial_text}"
                       </p>
                     </span>
-                    <br />
-
-                    {testimonial.testimonial}
-                    <br />
-                    <br />
                   </div>
                 ))}
               </div>
