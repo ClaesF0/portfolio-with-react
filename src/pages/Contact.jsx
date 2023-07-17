@@ -1,44 +1,120 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import emailjs from "@emailjs/browser";
+import { useState } from "react";
 
-export const Contact = () => {
-  const form = useRef();
+const Contact = () => {
+  const form = useRef(null);
+  const [errors, setErrors] = useState({});
+  const [showAlert, setShowAlert] = useState(false);
+
+  const validateForm = () => {
+    const errors = {};
+
+    // Validate form fields
+    if (form.current.from_name.value.trim() === "") {
+      errors.from_name = "Name is required";
+    }
+    if (form.current.from_email.value.trim() === "") {
+      errors.from_email = "Email is required";
+    } else if (!isValidEmail(form.current.from_email.value)) {
+      errors.from_email = "Invalid email";
+    }
+    if (form.current.message.value.trim() === "") {
+      errors.message = "Message is required";
+    }
+
+    setErrors(errors);
+
+    // Return true if no errors, false otherwise
+    return Object.keys(errors).length === 0;
+  };
+
+  const isValidEmail = (email) => {
+    // Perform email validation here (regex, library, etc.)
+    // Return true if email is valid, false otherwise
+    return true;
+  };
 
   const sendEmail = (e) => {
     e.preventDefault();
 
-    emailjs
-      .sendForm(
-        "service_clsu24g",
-        "template_ba0kten",
-        form.current,
-        "ZnHtRI5xUFt5gvFCL"
-      )
-      .then(
-        (result) => {
-          console.log("email seemingly successful", result.text);
-        },
-        (error) => {
-          console.log("error occured in sending email", error.text);
-        }
-      );
+    if (validateForm()) {
+      emailjs
+        .sendForm(
+          "service_clsu24g",
+          "template_ba0kten",
+          form.current,
+          "ZnHtRI5xUFt5gvFCL"
+        )
+        .then(
+          (result) => {
+            console.log("email seemingly successful", result.text);
+            form.current.reset(); // Reset the form after successful submission
+            setErrors({});
+            setShowAlert(true);
+          },
+          (error) => {
+            console.log("error occurred in sending email", error.text);
+          }
+        );
+    }
   };
 
+  useEffect(() => {
+    let timeoutId;
+    if (showAlert) {
+      timeoutId = setTimeout(() => {
+        setShowAlert(false);
+      }, 10000);
+    }
+
+    return () => {
+      clearTimeout(timeoutId);
+    };
+  }, [showAlert]);
+
   return (
-    <form
-      id="contact"
-      className="w-[40px] mx-auto flex-col"
-      ref={form}
-      onSubmit={sendEmail}
-    >
-      <label>Name</label>
-      <input type="text" name="from_name" />
-      <label>Email</label>
-      <input type="email" name="from_email" />
-      <label>Message</label>
-      <textarea name="message" />
-      <input type="submit" value="Send" />
-    </form>
+    <>
+      {showAlert && (
+        <div className="success-alert">
+          Email success! 😃👍 <span className="green-bar" />
+        </div>
+      )}
+      <div className="container">
+        <form id="contact" ref={form} onSubmit={sendEmail}>
+          <div className="container  flex flex-col sm:flex-row justify-between md:justify-evenly">
+            <div className="">
+              <input
+                type="text"
+                name="from_name"
+                placeholder="Name"
+                className="w-full mb-4 md:mb-0"
+              />
+              {errors.from_name && (
+                <div className="error">{errors.from_name}</div>
+              )}
+            </div>
+            <div>
+              <input
+                type="email"
+                name="from_email"
+                placeholder="E-mail"
+                className="w-full"
+              />
+              {errors.from_email && (
+                <div className="error">{errors.from_email}</div>
+              )}
+            </div>
+          </div>
+
+          <label>Message</label>
+          <textarea name="message" className="w-full md:w-1/2 mb-4" />
+          {errors.message && <div className="error">{errors.message}</div>}
+
+          <input type="submit" value="Send" />
+        </form>
+      </div>
+    </>
   );
 };
 
