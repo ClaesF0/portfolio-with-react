@@ -53,9 +53,9 @@ const About = () => {
           className="text-2xl w-full text-gray-700 bg-[#90d7ff] py-2"
         >
           {showTestimonials ? (
-            <p className="text-2xl">References ▲</p>
+            <p className="text-2xl">Close references ▲</p>
           ) : (
-            <p className="text-2xl">References ▼</p>
+            <p className="text-2xl">View references ▼</p>
           )}
         </button>
         {showTestimonials && (
