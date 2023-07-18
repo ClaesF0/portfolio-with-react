@@ -66,12 +66,12 @@ const About = () => {
                 {testimonials.map((testimonial) => (
                   <div
                     key={testimonial.id}
-                    className="rounded-lg border-2 border-b-8 border-r-8 p-2 my-2 md:m-4 md:p-4 h-fit md:h-auto w-[300px] md:w-[400px]"
+                    className="rounded-lg border-2 border-b-8 border-r-8 p-4 my-2 md:m-4 md:p-4 h-fit md:h-auto w-[300px] md:w-[400px]"
                   >
                     <img
                       src={testimonial.author_image}
                       alt=""
-                      className="w-[100px] md:w-[150px] mr-1 float-left rounded-full grayscale "
+                      className="w-[100px] md:w-[150px] mr-2 float-left rounded-full grayscale "
                     />
                     <span className="font-medium text-xs md:text-sm  ">
                       <a
@@ -98,9 +98,7 @@ const About = () => {
                     <br />
                     <br />
                     <span className="font-medium text-sm italic ">
-                      <p className=" block mt-2">
-                        "{testimonial.testimonial_text}"
-                      </p>
+                      <p className=" block">"{testimonial.testimonial_text}"</p>
                     </span>
                   </div>
                 ))}

@@ -75,6 +75,7 @@ const Contact = () => {
 
   return (
     <>
+      <p className="text-lg text-center mt-4">Get in touch with me!</p>
       {showAlert && (
         <div className="success-alert">
           Email success! 😃👍 <span className="green-bar" />
@@ -82,18 +83,19 @@ const Contact = () => {
       )}
       <div className="container">
         <form id="contact" ref={form} onSubmit={sendEmail}>
-          <div className="container  flex flex-col sm:flex-row justify-between md:justify-evenly">
-            <div className="">
+          <div className="w-full md:w-1/2 mx-auto flex flex-col md:flex-row justify-between sm:justify-apart">
+            <div className=" ">
               <input
                 type="text"
                 name="from_name"
                 placeholder="Name"
-                className="w-full mb-4 md:mb-0"
+                className="w-full  mb-4 md:mb-0"
               />
               {errors.from_name && (
                 <div className="error">{errors.from_name}</div>
               )}
             </div>
+            <div className="w-[40px] lg:hidden"></div>
             <div>
               <input
                 type="email"

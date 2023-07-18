@@ -22,8 +22,8 @@ function resumeDownloadLanguage() {}
 const Profile = () => {
   return (
     <>
-      <div id="about" className="container">
-        <div className="image-container block md:flex justify-around   mx-auto py-6 ">
+      <div id="about" className="container lg:px-40">
+        <div className="image-container block md:flex justify-around md:justify-evenly mx-auto py-6 ">
           <div className="container text-md md:text-xl">
             <p className="font-bold">
               Claes Folkestad, {age()}, Front End Graduate
@@ -73,7 +73,7 @@ const Profile = () => {
           <img
             src={profileImage}
             alt="Somewhat crudely cropped picture of Claes smiling, but with an added funny stick-hand raising a simplistic tophat."
-            className="profile-image bg-[#90d7ff] m-2 w-[200px] md:w-[300px] h-auto mx-auto"
+            className="profile-image bg-[#90d7ff] w-[200px] md:w-[300px] h-auto mx-auto"
           />
           <div
             className="text-md sm:text-xl md:text-2xl font-bold sm:text-right md:right-3 md:absolute text-[#90d7ff]"

@@ -81,9 +81,8 @@ label {
 
 textarea {
   width: 100%;
-  padding: 8px;
   margin-bottom: 10px;
-  border: 1px solid #ccc;
+  /*border: 1px solid #ccc;*/
   border-radius: 3px;
 }
 
@@ -94,7 +93,8 @@ textarea {
 }
 
 input[type="submit"] {
-  background-color: #5eff70;
+  background-color: #00a700;
+
   color: #ffffff;
   border: none;
   padding: 10px 20px;
