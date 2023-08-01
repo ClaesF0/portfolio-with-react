@@ -19,17 +19,20 @@ function age() {
 
 function resumeDownloadLanguage() {}
 
-const Profile = () => {
+const Profile = ({ currentLanguage }) => {
   return (
     <>
       <div id="about" className="container lg:px-40">
         <div className="image-container block md:flex justify-around md:justify-evenly mx-auto py-6 ">
           <div className="container text-md md:text-xl">
             <p className="font-bold">
-              Claes Folkestad, {age()}, Front End Graduate
+              Claes Folkestad, {age()},{" "}
+              {currentLanguage === "english"
+                ? "Front End Graduate"
+                : "nylig uteksaminert Front End Utvikler"}
             </p>
             <br />
-            Oslo, Norway ||{" "}
+            📍{currentLanguage === "english" ? "Oslo, Norway" : "Oslo"} ||{" "}
             <a
               href="https://www.linkedin.com/in/claes-folkestad-824115224/"
               target="_blank"
@@ -51,7 +54,7 @@ const Profile = () => {
               target="_blank"
               rel="noreferrer"
             >
-              Resume
+              {currentLanguage === "english" ? "Resume" : "CV"}
             </a>
             <br />
             <br />
@@ -63,8 +66,18 @@ const Profile = () => {
             >
               Noroff
             </a>{" "}
-            2021-23 | Class Captain | 93/100 GPA final year.
-            <br /> Pragmatic and creative. Teamplayer and people person.
+            {currentLanguage === "english" ? (
+              <>
+                2021-23 | Class Captain | 93/100 GPA final year. <br />{" "}
+                Pragmatic and creative. Teamplayer and people person.
+              </>
+            ) : (
+              <>
+                2021-23 | Klasserepresentant | 93/100 poeng år 2.
+                <br />
+                Pragmatisk og kreativ lagspiller som er flink med mennesker.
+              </>
+            )}
             <br /> <br />
             <br /> <br />
           </div>

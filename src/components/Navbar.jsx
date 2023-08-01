@@ -23,7 +23,7 @@ const Navbar = ({ currentLanguage, switchLanguage }) => {
             href="
                 #about"
           >
-            About
+            {currentLanguage === "english" ? "About" : "Om meg"}
           </a>
         </div>
         <div className="">
@@ -31,7 +31,7 @@ const Navbar = ({ currentLanguage, switchLanguage }) => {
             href="
                 #projects"
           >
-            Projects
+            {currentLanguage === "english" ? "Projects" : "Prosjekter"}
           </a>
         </div>
         <div className="">
@@ -39,7 +39,7 @@ const Navbar = ({ currentLanguage, switchLanguage }) => {
             href="
                 #contact"
           >
-            Contact
+            {currentLanguage === "english" ? "Contact me" : "Ta kontakt"}
           </a>
         </div>
         <div className="">
@@ -49,7 +49,7 @@ const Navbar = ({ currentLanguage, switchLanguage }) => {
             target="_blank"
             rel="noreferrer"
           >
-            <img style={{ height: "30px" }} src={linkedin} alt="" />
+            <img style={{ height: "20px" }} src={linkedin} alt="" />
           </a>
         </div>
         <div className="">
@@ -58,7 +58,7 @@ const Navbar = ({ currentLanguage, switchLanguage }) => {
             target="_blank"
             rel="noreferrer"
           >
-            <img style={{ height: "30px" }} src={github} alt="" />
+            <img style={{ height: "20px" }} src={github} alt="" />
           </a>
         </div>
         <button className="mx-1" onClick={switchLanguage}>
