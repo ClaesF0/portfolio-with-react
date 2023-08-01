@@ -54,6 +54,7 @@ const Contact = () => {
             setShowAlert(true);
           },
           (error) => {
+            alert("An error occurred, please try again", error.text);
             console.log("error occurred in sending email", error.text);
           }
         );
@@ -75,7 +76,7 @@ const Contact = () => {
 
   return (
     <>
-      <p className="text-lg text-center mt-4">Get in touch with me!</p>
+      <p className="text-center text-2xl">Coffee, chat and a handshake?</p>
       {showAlert && (
         <div className="success-alert">
           Email success! 😃👍 <span className="green-bar" />
@@ -109,7 +110,7 @@ const Contact = () => {
             </div>
           </div>
 
-          <label>Message</label>
+          <label className="mt-6">Message</label>
           <textarea name="message" className="w-full md:w-1/2 mb-4" />
           {errors.message && <div className="error">{errors.message}</div>}
 

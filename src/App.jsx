@@ -4,21 +4,33 @@ import "./index.css";
 import SupabaseContent from "./store/modules/databaseReducer";
 import Profile from "./pages/Profile";
 import Navbar from "./components/Navbar";
-import About from "./pages/Testimonials";
+import Testimonials from "./pages/Testimonials";
 import Contact from "./pages/Contact";
 
-function App() {
+const App = () => {
+  const [currentLanguage, setCurrentLanguage] = useState(
+    localStorage.getItem("language") || "norwegian"
+  );
+
+  const switchLanguage = () => {
+    const newLanguage =
+      currentLanguage === "norwegian" ? "english" : "norwegian";
+    localStorage.setItem("language", newLanguage);
+    setCurrentLanguage(newLanguage);
+  };
+
   return (
     <>
-      <div>
-        <Navbar />
-        <Profile />
-        <SupabaseContent />
-        <About />
-        <Contact />
-      </div>
+      <Navbar
+        currentLanguage={currentLanguage}
+        switchLanguage={switchLanguage}
+      />
+      <Profile currentLanguage={currentLanguage} />
+      <SupabaseContent currentLanguage={currentLanguage} />
+      <Testimonials currentLanguage={currentLanguage} />
+      <Contact currentLanguage={currentLanguage} />
     </>
   );
-}
+};
 
 export default App;

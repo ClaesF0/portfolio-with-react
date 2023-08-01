@@ -23,11 +23,6 @@ const SupabaseContent = () => {
   useEffect(() => {
     async function fetchData() {
       const { data, error } = await supabase.from("Portfolio_data").select("*");
-      console.log("supabase projects fetch ok");
-      console.log("data kommer under");
-      console.log(data);
-      console.log("hei dette er en string text");
-
       if (error) {
         console.error("Error fetching data:", error);
       } else {
@@ -165,7 +160,7 @@ const SupabaseContent = () => {
                           key={index}
                           src={icon}
                           alt={`Icon for ${technology}`}
-                          className="h-8 m-1 inline-block"
+                          className="h-12 m-1 inline-block"
                         />
                       );
                     })}
@@ -175,29 +170,17 @@ const SupabaseContent = () => {
                       href={project.repo_url}
                       target="_blank"
                       rel="noreferrer"
-                      className="font-bold text-gray-600 bg-slate-50 rounded-md p-2 "
+                      className="border-2 border-gray-600 text-gray-600 bg-slate-50 rounded-md p-2"
                     >
-                      <p
-                        className={`${
-                          index % 2 === 0 ? "text-blue-700" : "text-gray-600"
-                        }`}
-                      >
-                        Repo
-                      </p>
+                      <p className="text-black">View Repo</p>
                     </a>
                     <a
                       href={project.deployed_url}
                       target="_blank"
                       rel="noreferrer"
-                      className="font-bold text-gray-600 bg-slate-50 rounded-md p-2 "
+                      className="border-2 border-gray-600 text-gray-600 bg-slate-50 rounded-md p-2"
                     >
-                      <p
-                        className={`${
-                          index % 2 === 0 ? "text-blue-700" : "text-gray-600"
-                        }`}
-                      >
-                        Site
-                      </p>
+                      <p className="text-black">Visit Site</p>
                     </a>
                   </span>
                 </div>

@@ -1,8 +1,20 @@
 import React from "react";
 import linkedin from "../assets/LinkedIn_logo_initials.png";
 import github from "../assets/GitHub-logo.png";
+import { useState } from "react";
 
-const Navbar = () => {
+const Navbar = ({ currentLanguage, switchLanguage }) => {
+  //const [currentLanguage, setCurrentLanguage] = useState(
+  //  localStorage.getItem("language") || "norwegian"
+  //);
+  //
+  //const switchLanguage = () => {
+  //  const newLanguage =
+  //    currentLanguage === "norwegian" ? "english" : "norwegian";
+  //  localStorage.setItem("language", newLanguage);
+  //  setCurrentLanguage(newLanguage);
+  //};
+
   return (
     <div className="w-full bg-gray-200 h-16 sticky top-0 z-20">
       <div className="container text-sm md:text-lg flex justify-between items-center h-16 sticky top-0 z-20">
@@ -49,6 +61,9 @@ const Navbar = () => {
             <img style={{ height: "30px" }} src={github} alt="" />
           </a>
         </div>
+        <button className="mx-1" onClick={switchLanguage}>
+          {currentLanguage === "english" ? "🇳🇴" : "🇬🇧"}
+        </button>
       </div>
     </div>
   );

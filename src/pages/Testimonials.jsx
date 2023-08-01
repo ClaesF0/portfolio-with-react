@@ -2,63 +2,44 @@ import React from "react";
 import supabase from "../../supabase";
 import { useEffect, useState } from "react";
 
-const About = () => {
+const Testimonials = ({ currentLanguage }) => {
   const [testimonials, setTestimonials] = useState([]);
   const [showTestimonials, setShowTestimonials] = useState(false);
 
-  useEffect(() => {
-    async function fetchTestimonials() {
-      const { data, error } = await supabase
-        .from("Portfolio_testimonials")
-        .select("*");
-      console.log("supabase testimonials fetch ok");
-      console.log("testimonials data", data);
-
-      if (error) {
-        console.error("Error fetching data from testimonials:", error);
-      } else {
-        setTestimonials(data || []);
-      }
+  const fetchTestimonials = async () => {
+    const { data, error } = await supabase
+      .from("Portfolio_testimonials")
+      .select("*");
+    if (error) {
+      console.error("Error fetching data from testimonials:", error);
+    } else {
+      setTestimonials(data || []);
     }
-
+  };
+  useEffect(() => {
     fetchTestimonials();
-  }, []);
+  }, [currentLanguage]);
 
   const toggleTestimonials = () => {
     setShowTestimonials((prevState) => !prevState);
   };
 
-  /*
-  <div className="text-xl text-gray-700">
-        Instagram
-        <a
-          href="https://www.instagram.com/klissclaes/"
-          target="_blank"
-          rel="noreferrer"
-        >
-          <img
-            src="./src/assets/klissclaes_qr.png "
-            alt=""
-            className="w-[150px]"
-          />
-        </a>
-      </div>
-  */
-
   return (
     <>
-      <div className="full-width-container">
-        <button
-          onClick={toggleTestimonials}
-          className="text-2xl w-full text-gray-700 bg-[#90d7ff] py-2"
-        >
+      <div id="references" className="container my-8">
+        <p className="text-center text-2xl">References:</p>
+        <button onClick={toggleTestimonials} className="text-sm">
           {showTestimonials ? (
-            <p className="text-2xl">Close references ▲</p>
+            <p className="text-sm bg-[#90d7ff] p-2 border-2 border-black rounded-lg text-black">
+              View references
+            </p>
           ) : (
-            <p className="text-2xl">View references ▼</p>
+            <p className="text-sm bg-[#e0644c] p-2 border-2 border-black rounded-lg text-white">
+              Hide references
+            </p>
           )}
         </button>
-        {showTestimonials && (
+        {!showTestimonials && (
           <>
             <div className="text-lg text-gray-700">
               <br />
@@ -83,7 +64,9 @@ const About = () => {
                         <p>{testimonial.author_name}</p>
                       </a>
                       <p className="capitalize ">
-                        {testimonial.author_role}
+                        {currentLanguage === "english"
+                          ? testimonial.author_role_english
+                          : testimonial.author_role}
                         <a
                           href={testimonial.workplace_url}
                           target="_blank"
@@ -98,7 +81,11 @@ const About = () => {
                     <br />
                     <br />
                     <span className="font-medium text-sm italic ">
-                      <p className=" block">"{testimonial.testimonial_text}"</p>
+                      <p className=" block">
+                        {currentLanguage === "english"
+                          ? testimonial.testimonial_text_english
+                          : testimonial.testimonial_text}
+                      </p>
                     </span>
                   </div>
                 ))}
@@ -111,4 +98,4 @@ const About = () => {
   );
 };
 
-export default About;
+export default Testimonials;
