@@ -3,6 +3,7 @@ import linkedin from "../assets/LinkedIn_logo_initials.png";
 import github from "../assets/GitHub-logo.svg";
 import { useState } from "react";
 import Hamburger from "./Hamburger";
+import resume from "../assets/Claes-CV-v4.pdf";
 
 const Navbar = ({ currentLanguage, switchLanguage }) => {
   //const [currentLanguage, setCurrentLanguage] = useState(
@@ -58,6 +59,11 @@ const Navbar = ({ currentLanguage, switchLanguage }) => {
                 #contact"
             >
               {currentLanguage === "english" ? "Contact me" : "Ta kontakt"}
+            </a>
+          </li>
+          <li className="">
+            <a href={resume} target="_blank" rel="noopener noreferrer">
+              {currentLanguage === "english" ? "Resume" : "CV"}
             </a>
           </li>
           <li className="">
