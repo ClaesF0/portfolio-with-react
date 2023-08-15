@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from "react";
 import emailjs from "@emailjs/browser";
 import { useState } from "react";
 
-const Contact = () => {
+const Contact = ({ currentLanguage, switchLanguage }) => {
   const form = useRef(null);
   const [errors, setErrors] = useState({});
   const [showAlert, setShowAlert] = useState(false);
@@ -76,7 +76,11 @@ const Contact = () => {
 
   return (
     <>
-      <p className="text-center text-2xl">Coffee, chat and a handshake?</p>
+      <p className="text-center text-2xl">
+        {currentLanguage === "english"
+          ? "Coffee, chat and a handshake?"
+          : "Skal vi ta en kaffe?"}
+      </p>
       {showAlert && (
         <div className="success-alert">
           Email success! 😃👍 <span className="green-bar" />
