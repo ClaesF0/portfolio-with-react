@@ -113,7 +113,9 @@ const SupabaseContent = () => {
               <p className="text-xl mt-16 text-center">{project.title}</p>
               <div
                 className={`container mt-2 mx-auto md:flex ${
-                  index % 2 === 0 ? "md:flex-row " : "md:flex-row-reverse"
+                  index % 2 === 0
+                    ? "md:flex-row md:bg-[#90d7ff] "
+                    : "md:flex-row-reverse "
                 }`}
               >
                 <a
@@ -132,7 +134,7 @@ const SupabaseContent = () => {
                 <div
                   className={`mx-auto text-sm md:w-1/2 p-6 md:p-8 pt-0 md:pt-4 text-left md:ml-8 ${
                     index % 2 === 0
-                      ? "text-[#181415] text-xs bg-[#f8f8f8] md:bg-[#90d7ff]"
+                      ? "text-[#181415] text-xs bg-[#f8f8f8] "
                       : "text-[#181415]  text-xs bg-[#f8f8f8]"
                   }`}
                 >
