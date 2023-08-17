@@ -41,6 +41,7 @@ const Navbar = ({ currentLanguage, switchLanguage }) => {
             <a
               href="
                 #about"
+              onClick={toggleHamburger}
             >
               {currentLanguage === "english" ? "About" : "Om meg"}
             </a>
@@ -49,6 +50,7 @@ const Navbar = ({ currentLanguage, switchLanguage }) => {
             <a
               href="
                 #projects"
+              onClick={toggleHamburger}
             >
               {currentLanguage === "english" ? "Projects" : "Prosjekter"}
             </a>
@@ -57,12 +59,18 @@ const Navbar = ({ currentLanguage, switchLanguage }) => {
             <a
               href="
                 #contact"
+              onClick={toggleHamburger}
             >
               {currentLanguage === "english" ? "Contact me" : "Ta kontakt"}
             </a>
           </li>
           <li className="">
-            <a href={resume} target="_blank" rel="noopener noreferrer">
+            <a
+              href={resume}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={toggleHamburger}
+            >
               {currentLanguage === "english" ? "Resume" : "CV"}
             </a>
           </li>
@@ -72,6 +80,7 @@ const Navbar = ({ currentLanguage, switchLanguage }) => {
             https://www.linkedin.com/in/claes-folkestad-824115224/"
               target="_blank"
               rel="noreferrer"
+              onClick={toggleHamburger}
             >
               <img style={{ width: "30px" }} src={linkedin} alt="" />
             </a>
@@ -81,6 +90,7 @@ const Navbar = ({ currentLanguage, switchLanguage }) => {
               href="https://www.github.com/claesF0"
               target="_blank"
               rel="noreferrer"
+              onClick={toggleHamburger}
             >
               <img style={{ height: "30px" }} src={github} alt="" />
             </a>

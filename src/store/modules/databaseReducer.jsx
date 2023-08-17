@@ -93,12 +93,15 @@ const SupabaseContent = () => {
               const icon = technologyIcons[technology];
 
               return (
-                <img
-                  key={index}
-                  src={icon}
-                  alt={`${technology}`}
-                  className="h-10 m-3 inline-block"
-                />
+                <div className="inline-flex place-items-baseline  ">
+                  <img
+                    key={index}
+                    src={icon}
+                    alt={`${technology}`}
+                    className="h-10 m-3 inline-block"
+                  />{" "}
+                  <p className="hidden">{technology}</p>
+                </div>
               );
             })}
           </div>
