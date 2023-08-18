@@ -1,6 +1,7 @@
 import React from "react";
 import supabase from "../../supabase";
 import { useEffect, useState } from "react";
+import linkedin from "../assets/LinkedIn_logo_initials.png";
 
 const Testimonials = ({ currentLanguage }) => {
   const [testimonials, setTestimonials] = useState([]);
@@ -52,16 +53,17 @@ const Testimonials = ({ currentLanguage }) => {
                     <img
                       src={testimonial.author_image}
                       alt=""
-                      className="w-[100px] md:w-[150px] mr-2 float-left rounded-full grayscale "
+                      className="w-[100px] md:w-[150px] mr-2 float-left z-0 rounded-full grayscale "
                     />
                     <span className="font-medium text-xs md:text-sm  ">
                       <a
                         href={testimonial.author_linkedin}
                         target="_blank"
                         rel="noreferrer"
-                        className="font-semibold"
+                        className="font-semibold flex "
                       >
-                        <p>{testimonial.author_name}</p>
+                        <p>{testimonial.author_name} </p>
+                        <img src={linkedin} width="20 px" />
                       </a>
                       <p className="capitalize ">
                         {currentLanguage === "english"

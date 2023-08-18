@@ -41,7 +41,7 @@ const Navbar = ({ currentLanguage, switchLanguage }) => {
             <a
               href="
                 #about"
-              onClick={toggleHamburger}
+              onClick={window.innerWidth <= 768 ? toggleHamburger : null}
             >
               {currentLanguage === "english" ? "About" : "Om meg"}
             </a>
@@ -50,7 +50,7 @@ const Navbar = ({ currentLanguage, switchLanguage }) => {
             <a
               href="
                 #projects"
-              onClick={toggleHamburger}
+              onClick={window.innerWidth <= 768 ? toggleHamburger : null}
             >
               {currentLanguage === "english" ? "Projects" : "Prosjekter"}
             </a>
@@ -58,8 +58,17 @@ const Navbar = ({ currentLanguage, switchLanguage }) => {
           <li className="">
             <a
               href="
+                #references"
+              onClick={window.innerWidth <= 768 ? toggleHamburger : null}
+            >
+              {currentLanguage === "english" ? "Testimonials" : "Referanser"}
+            </a>
+          </li>
+          <li className="">
+            <a
+              href="
                 #contact"
-              onClick={toggleHamburger}
+              onClick={window.innerWidth <= 768 ? toggleHamburger : null}
             >
               {currentLanguage === "english" ? "Contact me" : "Ta kontakt"}
             </a>
@@ -69,7 +78,7 @@ const Navbar = ({ currentLanguage, switchLanguage }) => {
               href={resume}
               target="_blank"
               rel="noopener noreferrer"
-              onClick={toggleHamburger}
+              onClick={window.innerWidth <= 768 ? toggleHamburger : null}
             >
               {currentLanguage === "english" ? "Resume" : "CV"}
             </a>
@@ -80,7 +89,7 @@ const Navbar = ({ currentLanguage, switchLanguage }) => {
             https://www.linkedin.com/in/claes-folkestad-824115224/"
               target="_blank"
               rel="noreferrer"
-              onClick={toggleHamburger}
+              onClick={window.innerWidth <= 768 ? toggleHamburger : null}
             >
               <img style={{ width: "30px" }} src={linkedin} alt="" />
             </a>
@@ -90,7 +99,7 @@ const Navbar = ({ currentLanguage, switchLanguage }) => {
               href="https://www.github.com/claesF0"
               target="_blank"
               rel="noreferrer"
-              onClick={toggleHamburger}
+              onClick={window.innerWidth <= 768 ? toggleHamburger : null}
             >
               <img style={{ height: "30px" }} src={github} alt="" />
             </a>
