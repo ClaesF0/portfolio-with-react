@@ -1,7 +1,7 @@
 export default function Hamburger({ isOpen }) {
   return (
     <>
-      <div className="hamburger w-10 h-10">
+      <div className="hamburger w-10 h-10 mt-2">
         <div className="hamburger__line burger1"></div>
         <div className="hamburger__line burger2"></div>
         <div className="hamburger__line burger3"></div>
