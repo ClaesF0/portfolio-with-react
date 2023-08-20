@@ -86,7 +86,7 @@ const Profile = ({ currentLanguage }) => {
           <img
             src={profileImage}
             alt="Somewhat crudely cropped picture of Claes smiling, but with an added funny stick-hand raising a simplistic tophat."
-            className="profile-image bg-[#90d7ff] w-[200px] md:w-[300px] h-auto mx-auto"
+            className="profile-image bg-[#90d7ff] w-[200px] md:w-[300px] h-auto mx-auto -z-50"
           />
           <div
             className="text-md sm:text-xl md:text-2xl font-bold sm:text-right md:right-3 md:absolute text-[#90d7ff]"

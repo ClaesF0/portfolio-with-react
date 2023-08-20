@@ -24,12 +24,12 @@ const Navbar = ({ currentLanguage, switchLanguage }) => {
   };
 
   return (
-    <div className=" w-full h-16 sticky top-0 z-15">
+    <div className=" w-full h-16 sticky top-0 z-10">
       <div
         className={`hambar ${
           hamburgerOpen
-            ? "container text-2xl justify-between items-center h-16 sticky top-0 z-20 bg-[#f8f8f8]"
-            : "md:flex justify-evenly bg-[#f8f8f8]"
+            ? "container text-2xl justify-between items-center h-16 sticky top-0  bg-[#f8f8f8] "
+            : "md:flex justify-evenly bg-[#f8f8f8] "
         } `}
       >
         <ul
