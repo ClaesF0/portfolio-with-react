@@ -24,7 +24,7 @@ const Navbar = ({ currentLanguage, switchLanguage }) => {
   };
 
   return (
-    <div className=" w-full h-16 sticky top-0 z-10">
+    <div className=" w-full h-16 sticky top-0 z-10 text-[#38bdf8]  ">
       <div
         className={`hambar ${
           hamburgerOpen
