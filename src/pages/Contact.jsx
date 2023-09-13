@@ -140,25 +140,28 @@ export default Contact;
           Email sent successfully! 😃👍 <span className="green-bar" />
         </div>
       )}
-      <div className="container mx-auto">
+
+      <div className="container mx-auto grid-cols-2 gap-4 border-2 justify-items-center  border-orange-500 md:flex">
         <form
           id="contact"
           ref={form}
           onSubmit={sendEmail}
-          className="bg-white shadow-md rounded-md px-8 py-6"
+          className="bg-white shadow-md rounded-md py-6 border-2 border-blue-500 col-span-1 w-2/3"
         >
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="grid col-span-1 w-full md:grid-cols-2 gap-4 border-2 border-green-500">
             <div className="mb-4">
               <input
                 type="text"
                 name="from_name"
                 placeholder="Name"
                 className={`w-full px-3 py-2 border ${
-                  errors.from_name ? "border-red-500" : "border-gray-300"
-                } rounded-md focus:outline-none focus:border-blue-500`}
+                  errors.from_name
+                    ? "border-red-500 border-2"
+                    : "border-gray-300"
+                } rounded-md focus:outline-none focus:border-2 focus:border-blue-500`}
               />
               {errors.from_name && (
-                <div className="text-red-500 text-sm mt-1">
+                <div className="text-red-500 text-sm font-bold   mt-1">
                   {errors.from_name}
                 </div>
               )}
@@ -169,11 +172,13 @@ export default Contact;
                 name="from_email"
                 placeholder="E-mail"
                 className={`w-full px-3 py-2 border ${
-                  errors.from_email ? "border-red-500" : "border-gray-300"
-                } rounded-md focus:outline-none focus:border-blue-500`}
+                  errors.from_email
+                    ? "border-red-500 border-2"
+                    : "border-gray-300"
+                } rounded-md focus:outline-none focus:border-2 focus:border-blue-500`}
               />
               {errors.from_email && (
-                <div className="text-red-500 text-sm mt-1">
+                <div className="text-red-500 text-sm mt-1 font-bold">
                   {errors.from_email}
                 </div>
               )}
@@ -184,21 +189,30 @@ export default Contact;
           <textarea
             name="message"
             className={`w-full px-3 py-2 border ${
-              errors.message ? "border-red-500" : "border-gray-300"
-            } rounded-md focus:outline-none focus:border-blue-500`}
+              errors.message ? "border-red-500 border-2" : "border-gray-300"
+            } rounded-md focus:outline-none focus:border-2 focus:border-blue-500`}
             rows="4"
           />
           {errors.message && (
-            <div className="text-red-500 text-sm mt-1">{errors.message}</div>
+            <div className="text-red-500 text-sm mt-1 font-bold">
+              {errors.message}
+            </div>
           )}
 
           <button
             type="submit"
-            className="bg-blue-500 text-white py-2 px-4 mt-4 rounded-md hover:bg-blue-600 transition duration-300"
+            className="bg-blue-500 text-white py-2 px-4 mt-4 rounded-md hover:bg-blue-600 transition duration-300 active:bg-white active:text-blue-500 active:border-blue-500 active:border-2"
           >
             Send
           </button>
         </form>
+        <div className="col-span-1 border-2 border-red-500 ">
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/A_small_cup_of_coffee.JPG/1280px-A_small_cup_of_coffee.JPG"
+            alt="Image"
+            className=""
+          />
+        </div>
       </div>
     </div>
   );

@@ -15,7 +15,7 @@ import HeadlessWordPressCMSLogo from "../../assets/HeadlessWordpress.psd.svg";
 import vanillaJSLogo from "../../assets/JavaScript-Logo.svg";
 import wpPluginsLogo from "../../assets/wordpressplugins.psd.svg";
 
-const SupabaseContent = () => {
+const SupabaseContent = ({ currentLanguage, switchLanguage }) => {
   const [projects, setProjects] = useState([]);
   const [showLongSummary, setShowLongSummary] = useState(false);
   const [showProjects, setShowProjects] = useState(false);
@@ -23,6 +23,7 @@ const SupabaseContent = () => {
   useEffect(() => {
     async function fetchData() {
       const { data, error } = await supabase.from("Portfolio_data").select("*");
+
       if (error) {
         console.error("Error fetching data:", error);
       } else {
@@ -113,7 +114,6 @@ const SupabaseContent = () => {
           </p>
           {projects.map((project, index) => (
             <div key={project.id}>
-              <p className="p-4 text-xl mt-16 text-center">{project.title}</p>
               <div
                 className={` mt-2 mx-auto  ${
                   index % 2 === 0
@@ -145,9 +145,18 @@ const SupabaseContent = () => {
                         : "text-[#181415]  text-xs bg-[#f8f8f8]"
                     }`}
                   >
+                    <p className="p-4 text-xl font-extrabold text-center">
+                      {project.title}
+                    </p>
                     <div className="mb-4">
                       {showLongSummary ? (
-                        <p>{project.description}</p>
+                        currentLanguage === "english" ? (
+                          <p>{project.description_english}</p>
+                        ) : (
+                          <p>{project.description}</p>
+                        )
+                      ) : currentLanguage === "english" ? (
+                        <p>{project.executive_summary_english}</p>
                       ) : (
                         <p>{project.executive_summary}</p>
                       )}
@@ -157,13 +166,19 @@ const SupabaseContent = () => {
                       className="border-2 border-gray-600 text-gray-600 bg-slate-50 rounded-md p-2 "
                     >
                       {showLongSummary ? (
-                        <p>Read less ↑</p>
+                        currentLanguage === "english" ? (
+                          <p>Short & sweet</p>
+                        ) : (
+                          <p>Kort oppsummering</p>
+                        )
+                      ) : currentLanguage === "english" ? (
+                        <p>More details</p>
                       ) : (
-                        <p>Read more ↓</p>
+                        <p>Mer detaljer</p>
                       )}
                     </button>
 
-                    <p className="font-extrabold text-left mt-2">Tech used:</p>
+                    <p className="font-extrabold text-left mt-2">Tech stack:</p>
                     <div className="font-extrabold text-left mt-2">
                       {project.tech_stack
                         .split(", ")
@@ -175,7 +190,7 @@ const SupabaseContent = () => {
                               key={index}
                               src={icon}
                               alt={`Icon for ${technology}`}
-                              className="h-12 m-1 inline-block "
+                              className="h-8 m-1 inline-block "
                             />
                           );
                         })}
@@ -188,7 +203,7 @@ const SupabaseContent = () => {
                         rel="noopener noreferrer"
                         className="inline-flex items-center px-4 py-2 text-gray-800 bg-gray-100 rounded-md hover:bg-gray-200 transition duration-300"
                       >
-                        <span className="mr-2">Explore Code</span>
+                        <span className="mr-2">Github repo</span>
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           className="w-4 h-4"

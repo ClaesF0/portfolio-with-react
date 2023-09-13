@@ -37,6 +37,7 @@ const Profile = ({ currentLanguage }) => {
               href="https://www.linkedin.com/in/claes-folkestad-824115224/"
               target="_blank"
               rel="noreferrer"
+              className="text-[#90d7ff]"
             >
               LinkedIn
             </a>{" "}
@@ -45,6 +46,7 @@ const Profile = ({ currentLanguage }) => {
               href="https://github.com/ClaesF0"
               target="_blank"
               rel="noreferrer"
+              className="text-[#90d7ff]"
             >
               GitHub
             </a>
@@ -53,6 +55,7 @@ const Profile = ({ currentLanguage }) => {
               href="https://www.linkedin.com/in/claes-folkestad-824115224/details/experience/"
               target="_blank"
               rel="noreferrer"
+              className="text-[#90d7ff]"
             >
               {currentLanguage === "english" ? "Resume" : "CV"}
             </a>
