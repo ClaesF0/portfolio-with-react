@@ -6,6 +6,7 @@ const Contact = ({ currentLanguage, switchLanguage }) => {
   const form = useRef(null);
   const [errors, setErrors] = useState({});
   const [showAlert, setShowAlert] = useState(false);
+  const [isInputClicked, setInputClicked] = useState(false); // State to track if the input was clicked
 
   const validateForm = () => {
     const errors = {};
@@ -141,27 +142,40 @@ export default Contact;
         </div>
       )}
 
-      <div className="container mx-auto grid-cols-2 gap-4 border-2 justify-items-center  border-orange-500 md:flex">
+      <div className="container mx-auto grid-cols-2 gap-4 justify-items-center  md:flex">
         <form
           id="contact"
           ref={form}
           onSubmit={sendEmail}
-          className="bg-white shadow-md rounded-md py-6 border-2 border-blue-500 col-span-1 w-2/3"
+          className=" shadow-md rounded-md py-6 border-2 border-blue-500 col-span-1 w-2/3 bg-cover bg-center bg-no-repeat bg-opacity-90 relative"
+          style={{
+            backgroundImage: `url('https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/A_small_cup_of_coffee.JPG/1280px-A_small_cup_of_coffee.JPG')`,
+          }}
         >
-          <div className="grid col-span-1 w-full md:grid-cols-2 gap-4 border-2 border-green-500">
+          <div className="grid col-span-1 w-full md:grid-cols-2 gap-4 ">
             <div className="mb-4">
               <input
                 type="text"
                 name="from_name"
                 placeholder="Name"
-                className={`w-full px-3 py-2 border ${
+                className={`w-full px-3 py-2 border rounded-md ${
                   errors.from_name
-                    ? "border-red-500 border-2"
-                    : "border-gray-300"
-                } rounded-md focus:outline-none focus:border-2 focus:border-blue-500`}
+                    ? "border-red-500 border-4 bg-white"
+                    : "border-gray-300 bg-purple-400"
+                } text-black focus:outline-none focus:border-2 focus:border-blue-500 focus:bg-white focus:bg-opacity-50`}
+                style={{
+                  backgroundColor: errors.from_name
+                    ? "rgba(255, 1, 1, 1)" // No background color when there are errors
+                    : "rgba(0, 0, 0, 0.1)", // Translucent white background
+                }}
+                onClick={() => setInputClicked(true)} // Set input clicked to true when clicked
+                onBlur={() => {
+                  setInputClicked(false); // Set input clicked to false on blur
+                  validateForm(); // Trigger validation on blur
+                }}
               />
               {errors.from_name && (
-                <div className="text-red-500 text-sm font-bold   mt-1">
+                <div className="text-red-500 text-sm font-bold bg-white mt-1">
                   {errors.from_name}
                 </div>
               )}
@@ -171,14 +185,24 @@ export default Contact;
                 type="email"
                 name="from_email"
                 placeholder="E-mail"
-                className={`w-full px-3 py-2 border ${
+                className={`w-full px-3 py-2 border rounded-md ${
                   errors.from_email
-                    ? "border-red-500 border-2"
-                    : "border-gray-300"
-                } rounded-md focus:outline-none focus:border-2 focus:border-blue-500`}
+                    ? "border-red-500 border-4 bg-white"
+                    : "border-gray-100 "
+                } text-black focus:outline-none focus:border-2 focus:border-blue-500 focus:bg-white focus:bg-opacity-1`}
+                style={{
+                  backgroundColor: errors.from_email
+                    ? "rgba(255, 1, 1, 1)" // No background color when there are errors
+                    : "rgba(0, 0, 0, 0.1)", // Translucent white background
+                }}
+                onClick={() => setInputClicked(true)} // Set input clicked to true when clicked
+                onBlur={() => {
+                  setInputClicked(false); // Set input clicked to false on blur
+                  validateForm(); // Trigger validation on blur
+                }}
               />
               {errors.from_email && (
-                <div className="text-red-500 text-sm mt-1 font-bold">
+                <div className="text-red-500 text-sm mt-1 p-1 font-bold text-center bg-white rounded-md">
                   {errors.from_email}
                 </div>
               )}
@@ -187,14 +211,26 @@ export default Contact;
 
           <label className="mt-6 block">Message</label>
           <textarea
-            name="message"
-            className={`w-full px-3 py-2 border ${
-              errors.message ? "border-red-500 border-2" : "border-gray-300"
-            } rounded-md focus:outline-none focus:border-2 focus:border-blue-500`}
+            placeholder="Message"
+            className={`w-full px-3 py-2 border rounded-md ${
+              errors.from_message
+                ? "border-red-500 border-4 bg-white"
+                : "border-gray-100 "
+            } text-black focus:outline-none focus:border-2 focus:border-blue-500 focus:bg-white focus:bg-opacity-50`}
+            style={{
+              backgroundColor: errors.from_message
+                ? "rgba(255, 1, 1, 1)" // No background color when there are errors
+                : "rgba(0, 0, 0, 0.1)", // Translucent white background
+            }}
+            onClick={() => setInputClicked(true)} // Set input clicked to true when clicked
+            onBlur={() => {
+              setInputClicked(false); // Set input clicked to false on blur
+              validateForm(); // Trigger validation on blur
+            }}
             rows="4"
           />
           {errors.message && (
-            <div className="text-red-500 text-sm mt-1 font-bold">
+            <div className="text-red-500 bg-white rounded-md p-1 text-sm mt-1 font-bold">
               {errors.message}
             </div>
           )}
@@ -206,11 +242,11 @@ export default Contact;
             Send
           </button>
         </form>
-        <div className="col-span-1 border-2 border-red-500 ">
+        <div className="col-span-1 border-2 border-red-500 rounded-md overflow-hidden">
           <img
             src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/A_small_cup_of_coffee.JPG/1280px-A_small_cup_of_coffee.JPG"
             alt="Image"
-            className=""
+            className="w-full h-auto"
           />
         </div>
       </div>
