@@ -1,12 +1,14 @@
 import React, { useEffect, useRef } from "react";
 import emailjs from "@emailjs/browser";
 import { useState } from "react";
+import { setIn } from "formik";
 
 const Contact = ({ currentLanguage, switchLanguage }) => {
   const form = useRef(null);
   const [errors, setErrors] = useState({});
   const [showAlert, setShowAlert] = useState(false);
   const [isInputClicked, setInputClicked] = useState(false); // State to track if the input was clicked
+  const [inputValid, setInputValid] = useState(false); // State to track if the input is valid
 
   const validateForm = () => {
     const errors = {};
@@ -15,10 +17,18 @@ const Contact = ({ currentLanguage, switchLanguage }) => {
     if (form.current.from_name.value.trim() === "") {
       errors.from_name = "Name is required";
     }
-    if (form.current.from_email.value.trim() === "") {
+    if (
+      isInputClicked &&
+      (form.current.from_email.value.trim() === "" ||
+        !isValidEmail(form.current.from_email.value))
+    ) {
       errors.from_email = "Email is required";
+      setInputValid(false);
     } else if (!isValidEmail(form.current.from_email.value)) {
       errors.from_email = "Invalid email";
+      setInputValid(false);
+    } else {
+      setInputValid(true);
     }
     if (form.current.message.value.trim() === "") {
       errors.message = "Message is required";
@@ -74,60 +84,6 @@ const Contact = ({ currentLanguage, switchLanguage }) => {
       clearTimeout(timeoutId);
     };
   }, [showAlert]);
-  /*
-  return (
-    <>
-      <p className="text-center text-2xl">
-        {currentLanguage === "english"
-          ? "Coffee, chat and a handshake?"
-          : "Skal vi ta en kaffe?"}
-      </p>
-      {showAlert && (
-        <div className="success-alert">
-          Email success! 😃👍 <span className="green-bar" />
-        </div>
-      )}
-      <div className="container">
-        <form id="contact" ref={form} onSubmit={sendEmail}>
-          <div className="w-full md:w-1/2 mx-auto flex flex-col md:flex-row justify-between sm:justify-apart">
-            <div className=" ">
-              <input
-                type="text"
-                name="from_name"
-                placeholder="Name"
-                className="w-full  mb-4 md:mb-0"
-              />
-              {errors.from_name && (
-                <div className="error">{errors.from_name}</div>
-              )}
-            </div>
-            <div className="w-[40px] lg:hidden"></div>
-            <div>
-              <input
-                type="email"
-                name="from_email"
-                placeholder="E-mail"
-                className="w-full"
-              />
-              {errors.from_email && (
-                <div className="error">{errors.from_email}</div>
-              )}
-            </div>
-          </div>
-
-          <label className="mt-6">Message</label>
-          <textarea name="message" className="w-full md:w-1/2 mb-4" />
-          {errors.message && <div className="error">{errors.message}</div>}
-
-          <input type="submit" value="Send" />
-        </form>
-      </div>
-    </>
-  );
-};
-
-export default Contact;
-*/
 
   return (
     <div className="py-8">
@@ -147,7 +103,7 @@ export default Contact;
           id="contact"
           ref={form}
           onSubmit={sendEmail}
-          className=" shadow-md rounded-md py-6 border-2 border-blue-500 col-span-1 w-2/3 bg-cover bg-center bg-no-repeat bg-opacity-90 relative"
+          className=" shadow-md rounded-md py-6 border-2 border-blue-500 col-span-1 w-2/3 bg-cover bg-center bg-no-repeat bg-opacity-90 relative mx-auto"
           style={{
             backgroundImage: `url('https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/A_small_cup_of_coffee.JPG/1280px-A_small_cup_of_coffee.JPG')`,
           }}
@@ -158,16 +114,16 @@ export default Contact;
                 type="text"
                 name="from_name"
                 placeholder="Name"
+                style={{
+                  backgroundColor: errors.from_name
+                    ? "rgba(255, 1, 1, 1)" // No background color when there are errors
+                    : "rgba(255, 255, 255, 0.2)", // Translucent white background
+                }}
                 className={`w-full px-3 py-2 border rounded-md ${
                   errors.from_name
                     ? "border-red-500 border-4 bg-white"
                     : "border-gray-300 bg-purple-400"
-                } text-black focus:outline-none focus:border-2 focus:border-blue-500 focus:bg-white focus:bg-opacity-50`}
-                style={{
-                  backgroundColor: errors.from_name
-                    ? "rgba(255, 1, 1, 1)" // No background color when there are errors
-                    : "rgba(0, 0, 0, 0.1)", // Translucent white background
-                }}
+                } text-black focus:outline-none focus:border-2 focus:border-blue-500 focus:bg-black `}
                 onClick={() => setInputClicked(true)} // Set input clicked to true when clicked
                 onBlur={() => {
                   setInputClicked(false); // Set input clicked to false on blur
@@ -189,10 +145,10 @@ export default Contact;
                   errors.from_email
                     ? "border-red-500 border-4 bg-white"
                     : "border-gray-100 "
-                } text-black focus:outline-none focus:border-2 focus:border-blue-500 focus:bg-white focus:bg-opacity-1`}
+                } text-black focus:outline-none focus:border-2 focus:border-blue-500 focus:bg-white bg-opacity-100`}
                 style={{
                   backgroundColor: errors.from_email
-                    ? "rgba(255, 1, 1, 1)" // No background color when there are errors
+                    ? "rgba(255, 255, 255, 1)" // No background color when there are errors
                     : "rgba(0, 0, 0, 0.1)", // Translucent white background
                 }}
                 onClick={() => setInputClicked(true)} // Set input clicked to true when clicked
@@ -211,12 +167,13 @@ export default Contact;
 
           <label className="mt-6 block">Message</label>
           <textarea
-            placeholder="Message"
+            color="black"
+            name="message"
             className={`w-full px-3 py-2 border rounded-md ${
               errors.from_message
                 ? "border-red-500 border-4 bg-white"
                 : "border-gray-100 "
-            } text-black focus:outline-none focus:border-2 focus:border-blue-500 focus:bg-white focus:bg-opacity-50`}
+            } text-black focus:outline-none focus:border-2 focus:border-blue-500 focus:bg-white focus:bg-opacity-1`}
             style={{
               backgroundColor: errors.from_message
                 ? "rgba(255, 1, 1, 1)" // No background color when there are errors
@@ -242,7 +199,7 @@ export default Contact;
             Send
           </button>
         </form>
-        <div className="col-span-1 border-2 border-red-500 rounded-md overflow-hidden">
+        <div className="hidden col-span-1 border-2 border-red-500 rounded-md overflow-hidden">
           <img
             src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/A_small_cup_of_coffee.JPG/1280px-A_small_cup_of_coffee.JPG"
             alt="Image"
