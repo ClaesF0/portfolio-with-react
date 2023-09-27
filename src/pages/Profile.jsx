@@ -32,12 +32,12 @@ const Profile = ({ currentLanguage }) => {
                 : "nylig uteksaminert Front End Utvikler"}
             </p>
             <br />
-            📍{currentLanguage === "english" ? "Oslo, Norway" : "Oslo"} ||{" "}
+            📍 {currentLanguage === "english" ? "Oslo, Norway" : "Oslo"} ||{" "}
             <a
               href="https://www.linkedin.com/in/claes-folkestad-824115224/"
               target="_blank"
               rel="noreferrer"
-              className="text-[#90d7ff]"
+              className="text-[#38bdf8]"
             >
               LinkedIn
             </a>{" "}
@@ -46,16 +46,16 @@ const Profile = ({ currentLanguage }) => {
               href="https://github.com/ClaesF0"
               target="_blank"
               rel="noreferrer"
-              className="text-[#90d7ff]"
+              className="text-[#38bdf8]"
             >
               GitHub
-            </a>
+            </a>{" "}
             |{" "}
             <a
               href="https://www.linkedin.com/in/claes-folkestad-824115224/details/experience/"
               target="_blank"
               rel="noreferrer"
-              className="text-[#90d7ff]"
+              className="text-[#38bdf8]"
             >
               {currentLanguage === "english" ? "Resume" : "CV"}
             </a>
@@ -66,6 +66,7 @@ const Profile = ({ currentLanguage }) => {
               href="https://www.noroff.no/en/studies/vocational-school/front-end-development"
               target="_blank"
               rel="noreferrer"
+              className="text-[#38bdf8]"
             >
               Noroff
             </a>{" "}

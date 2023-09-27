@@ -10,6 +10,7 @@ const Contact = ({ currentLanguage, switchLanguage }) => {
   const [isInputClicked, setInputClicked] = useState(false); // State to track if the input was clicked
   const [inputValid, setInputValid] = useState(false); // State to track if the input is valid
 
+  /*
   const validateForm = () => {
     const errors = {};
 
@@ -38,6 +39,58 @@ const Contact = ({ currentLanguage, switchLanguage }) => {
 
     // Return true if no errors, false otherwise
     return Object.keys(errors).length === 0;
+  };
+*/
+
+  const validateName = () => {
+    const name = form.current.from_name.value.trim();
+    if (name === "") {
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        from_name: "Name is required",
+      }));
+    } else {
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        from_name: "",
+      }));
+    }
+  };
+
+  const validateEmail = () => {
+    const email = form.current.from_email.value.trim();
+    if (isInputClicked && (email === "" || !isValidEmail(email))) {
+      setInputValid(false);
+      return "Email is required";
+    } else if (!isValidEmail(email)) {
+      setInputValid(false);
+      return "Invalid email";
+    }
+    setInputValid(true);
+    return "";
+  };
+
+  const validateMessage = () => {
+    const message = form.current.message.value.trim();
+    if (message === "") {
+      return "Message is required";
+    }
+    return "";
+  };
+
+  const validateForm = () => {
+    const nameError = validateName();
+    const emailError = validateEmail();
+    const messageError = validateMessage();
+
+    setErrors({
+      from_name: nameError,
+      from_email: emailError,
+      message: messageError,
+    });
+
+    // Return true if no errors, false otherwise
+    return !nameError && !emailError && !messageError;
   };
 
   const isValidEmail = (email) => {
@@ -104,9 +157,9 @@ const Contact = ({ currentLanguage, switchLanguage }) => {
           ref={form}
           onSubmit={sendEmail}
           className=" shadow-md rounded-md py-6 border-2 border-blue-500 col-span-1 w-2/3 bg-cover bg-center bg-no-repeat bg-opacity-90 relative mx-auto"
-          style={{
-            backgroundImage: `url('https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/A_small_cup_of_coffee.JPG/1280px-A_small_cup_of_coffee.JPG')`,
-          }}
+          //style={{
+          //  backgroundImage: `url('https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/A_small_cup_of_coffee.JPG/1280px-A_small_cup_of_coffee.JPG')`,
+          //}}
         >
           <div className="grid col-span-1 w-full md:grid-cols-2 gap-4 ">
             <div className="mb-4">
@@ -114,20 +167,31 @@ const Contact = ({ currentLanguage, switchLanguage }) => {
                 type="text"
                 name="from_name"
                 placeholder="Name"
-                style={{
-                  backgroundColor: errors.from_name
-                    ? "rgba(255, 1, 1, 1)" // No background color when there are errors
-                    : "rgba(255, 255, 255, 0.2)", // Translucent white background
+                className={`w-full px-3 py-2 border-2 rounded-md bg-white
+                 focus:text-black focus:outline-none focus:border-4 focus:border-blue-500 focus:bg-white 
+                ${
+                  isInputClicked
+                    ? errors.from_name
+                      ? "border-2 border-red-500"
+                      : ""
+                    : "border-2 "
+                }
+                `}
+                onClick={() => {
+                  setInputClicked(true);
+                  console.log("Input Clicked: true");
+                }} // Set input clicked to true when clicked
+                onKeyDown={() => {
+                  validateName();
+                  console.log("onKeyDown: true");
                 }}
-                className={`w-full px-3 py-2 border rounded-md ${
-                  errors.from_name
-                    ? "border-red-500 border-4 bg-white"
-                    : "border-gray-300 bg-purple-400"
-                } text-black focus:outline-none focus:border-2 focus:border-blue-500 focus:bg-black `}
-                onClick={() => setInputClicked(true)} // Set input clicked to true when clicked
                 onBlur={() => {
+                  console.log("Input Blurred");
                   setInputClicked(false); // Set input clicked to false on blur
-                  validateForm(); // Trigger validation on blur
+                  {
+                    validateName();
+                  } // Trigger validation on blur
+                  console.log("Input Clicked: false");
                 }}
               />
               {errors.from_name && (
@@ -141,16 +205,14 @@ const Contact = ({ currentLanguage, switchLanguage }) => {
                 type="email"
                 name="from_email"
                 placeholder="E-mail"
-                className={`w-full px-3 py-2 border rounded-md ${
-                  errors.from_email
-                    ? "border-red-500 border-4 bg-white"
-                    : "border-gray-100 "
-                } text-black focus:outline-none focus:border-2 focus:border-blue-500 focus:bg-white bg-opacity-100`}
-                style={{
-                  backgroundColor: errors.from_email
-                    ? "rgba(255, 255, 255, 1)" // No background color when there are errors
-                    : "rgba(0, 0, 0, 0.1)", // Translucent white background
-                }}
+                className={`w-full px-3 py-2 border rounded-md bg-white
+                 focus:text-black focus:outline-none focus:border-4 focus:border-blue-500 focus:bg-white  ${
+                   isInputClicked
+                     ? errors.from_email
+                       ? "border-2 border-red-500"
+                       : ""
+                     : "border-2 "
+                 }`}
                 onClick={() => setInputClicked(true)} // Set input clicked to true when clicked
                 onBlur={() => {
                   setInputClicked(false); // Set input clicked to false on blur
@@ -158,27 +220,27 @@ const Contact = ({ currentLanguage, switchLanguage }) => {
                 }}
               />
               {errors.from_email && (
-                <div className="text-red-500 text-sm mt-1 p-1 font-bold text-center bg-white rounded-md">
+                <div className="text-red-500 text-sm mt-1 p-1 font-bold bg-white rounded-md">
                   {errors.from_email}
                 </div>
               )}
             </div>
           </div>
 
-          <label className="mt-6 block">Message</label>
+          <label className="mt-6 block hidden">Message</label>
           <textarea
             color="black"
             name="message"
-            className={`w-full px-3 py-2 border rounded-md ${
-              errors.from_message
-                ? "border-red-500 border-4 bg-white"
-                : "border-gray-100 "
-            } text-black focus:outline-none focus:border-2 focus:border-blue-500 focus:bg-white focus:bg-opacity-1`}
-            style={{
-              backgroundColor: errors.from_message
-                ? "rgba(255, 1, 1, 1)" // No background color when there are errors
-                : "rgba(0, 0, 0, 0.1)", // Translucent white background
-            }}
+            placeholder="Message"
+            className={`w-full px-3 py-2 border rounded-md 
+            bg-white
+            focus:text-black focus:outline-none focus:border-4 focus:border-blue-500 focus:bg-white ${
+              isInputClicked
+                ? errors.from_message
+                  ? "border-2 border-red-500"
+                  : "border-gray-100 "
+                : "border-2 "
+            } `}
             onClick={() => setInputClicked(true)} // Set input clicked to true when clicked
             onBlur={() => {
               setInputClicked(false); // Set input clicked to false on blur
@@ -199,6 +261,7 @@ const Contact = ({ currentLanguage, switchLanguage }) => {
             Send
           </button>
         </form>
+
         <div className="hidden col-span-1 border-2 border-red-500 rounded-md overflow-hidden">
           <img
             src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/A_small_cup_of_coffee.JPG/1280px-A_small_cup_of_coffee.JPG"
