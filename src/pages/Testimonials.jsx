@@ -26,6 +26,112 @@ const Testimonials = ({ currentLanguage }) => {
     setShowTestimonials((prevState) => !prevState);
   };
 
+  const HighlightedText = ({ text, wordsToHighlight }) => {
+    const highlightedWords = wordsToHighlight.join("|");
+    //const regex = new RegExp(`\\b(${highlightedWords})\\b`, "gi");
+    const regex = new RegExp(
+      `\\b(${highlightedWords.replace(
+        /([\u0080-\uFFFF\wæøåÆØÅ]+)/gi,
+        "\\b$1\\b"
+      )})\\b`,
+      "gi"
+    );
+
+    const highlightedText = text.split(regex).map((part, index) =>
+      index % 2 === 0 ? (
+        <span key={index}>{part}</span>
+      ) : (
+        <span key={index} className="highlighted-word">
+          {part}
+        </span>
+      )
+    );
+
+    return <div className="highlighted-text">{highlightedText}</div>;
+  };
+
+  const wordsToHighlight = [
+    "consistently impressed",
+    "exceptional",
+    "impressive",
+    "dedicated",
+    "outstanding",
+    "calm",
+    "highly organized",
+    "committed",
+    "responsible",
+    "valuable addition",
+    "engaged",
+    "reliable",
+    "good at taking care",
+    "pleasure to recommend",
+    "conscientious",
+    "punctual",
+    "efficient",
+    "well-liked",
+    "warmest recommendations",
+    "well-liked",
+    "wise",
+    "trustworthy",
+    "excellent manner",
+    "fantastic",
+    "engaged",
+    "cooperative",
+    "warmest recommendations",
+  ];
+
+  const wordsToHighlightNorwegian = [
+    "strekker seg langt",
+    "talent, lidenskap og arbeidsmoral",
+    "konsekvent imponert",
+    "eksepsjonelle ferdigheter i problemløsning og å finne klare løsninger",
+    "imponerende tekniske evner",
+    "dedikert og hardtarbeidende",
+    "en verdifull ressurs for ethvert team",
+    "en positiv innvirkning uansett hvor han går",
+    "kontroll og virkelig rydde opp i et system som hadde store utfordringer",
+    "en redning",
+    "headhuntet",
+    "Jeg vil anbefale Claes Folkestad på det sterkeste.",
+    "gjennomgående orden og struktur",
+    "rolig",
+    "formidabel",
+    "organisert",
+    "til å stole på",
+    "en av de mest hardtarbeidende og ansvarsfulle idealistene",
+    "sier aldri nei",
+    "initiativ",
+    "forbedre",
+    "utvikle",
+    "meget god digital kompetanse",
+    "fleksibilitet",
+    "engasjert",
+    "ansvarlig",
+    "verdifull tillegg",
+    "pålitelig",
+    "flink til å ta vare på menneskene rundt seg",
+    "sosial",
+    "beste anbefalinger",
+    "utadvendt",
+    "glede å anbefale",
+    "pliktoppfyllende",
+    "hardtarbeidende",
+    "ansvarsbevisst",
+    "bidratt til et godt arbeidsmiljø",
+    "punktlig",
+    "effektiv",
+    "godt likt av kolleger samt klientell",
+    "varmeste anbefalinger",
+    "klok",
+    "tillitsverdig",
+    "fungerer bra i varierte og tidvis hektiske situasjoner",
+    "utmerket måte",
+    "fantastisk",
+    "engasjert",
+    "samarbeidsvillig",
+    "varmeste anbefalinger",
+  ];
+
   return (
     <>
       <div id="references" className="container my-8">
@@ -49,7 +155,7 @@ const Testimonials = ({ currentLanguage }) => {
                 {testimonials.map((testimonial) => (
                   <div
                     key={testimonial.id}
-                    className="rounded-lg border-2 border-b-8 border-r-8 m-2 p-4 my-2 md:p-4 h-fit md:h-auto w-[300px] md:w-[360px] md:hover:border-[#90d7ff] md:grayscale md:hover:grayscale-0 transition duration-1000 ease-in-out hover:scale-110 hover:greyscale-0"
+                    className="testimonial-card rounded-lg border-2 border-b-8 border-r-8 m-4 p-4 my-2 md:p-4 h-fit md:h-auto w-full sm:w-[400px] md:hover:border-[#90d7ff] md:grayscale md:hover:grayscale-0 transition duration-1000 ease-in-out hover:scale-110 hover:greyscale-0"
                   >
                     <div className="h-32 md:h-40">
                       <img
@@ -84,9 +190,18 @@ const Testimonials = ({ currentLanguage }) => {
                     </div>
                     <div className="">
                       <p className=" block font-medium text-sm italic ">
-                        {currentLanguage === "english"
-                          ? testimonial.testimonial_text_english
-                          : testimonial.testimonial_text}
+                        <HighlightedText
+                          text={
+                            currentLanguage === "english"
+                              ? testimonial.testimonial_text_english
+                              : testimonial.testimonial_text
+                          }
+                          wordsToHighlight={
+                            currentLanguage === "english"
+                              ? wordsToHighlight
+                              : wordsToHighlightNorwegian
+                          }
+                        />
                       </p>
                     </div>
                   </div>

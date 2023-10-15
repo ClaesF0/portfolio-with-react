@@ -192,3 +192,29 @@ input[type="submit"]:hover {
     padding: 10px;
   }
 }
+
+.highlighted-word {
+  font-size: 100%; /* Initial font size */
+  background-color: transparent;
+  color: black; /* Initial text color */
+  transition: background-color 1.5s ease, color 1.5s ease, font-size 1.5s ease;
+}
+
+.testimonial-card:hover .highlighted-word {
+  font-size: 110%;
+  /*
+  background-color: #38bdf8;
+  color: white;,
+  */
+  background-color: orange;
+
+  font-weight: bold;
+  padding: 2px 2px;
+  border-radius: 2px 3px 1px;
+
+  /* Add any other styles you want for highlighted words */
+}
+
+.highlighted-word:hover {
+  font-size: 120%;
+}
