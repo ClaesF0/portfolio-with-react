@@ -26,29 +26,110 @@ const Testimonials = ({ currentLanguage }) => {
     setShowTestimonials((prevState) => !prevState);
   };
 
-  const HighlightedText = ({ text, wordsToHighlight }) => {
-    const highlightedWords = wordsToHighlight.join("|");
-    //const regex = new RegExp(`\\b(${highlightedWords})\\b`, "gi");
-    const regex = new RegExp(
-      `\\b(${highlightedWords.replace(
-        /([\u0080-\uFFFF\wæøåÆØÅ]+)/gi,
-        "\\b$1\\b"
-      )})\\b`,
-      "gi"
-    );
+  //const HighlightedText = ({ text, wordsToHighlight }) => {
+  //  const highlightedWords = wordsToHighlight.join("|");
+  //  //const regex = new RegExp(`\\b(${highlightedWords})\\b`, "gi");
+  //  const regex = new RegExp(
+  //    `\\b(${highlightedWords.replace(
+  //      /([\u0080-\uFFFF\wæøåÆØÅ]+)/gi,
+  //      "\\b$1\\b"
+  //    )})\\b`,
+  //    "gi"
+  //  );
+  //
+  //  const highlightedText = text.split(regex).map((part, index) =>
+  //    index % 2 === 0 ? (
+  //      <span key={index}>{part}</span>
+  //    ) : (
+  //      <span key={index} className="highlighted-word">
+  //        {part}
+  //      </span>
+  //    )
+  //  );
+  //
+  //  return <div className="highlighted-text">{highlightedText}</div>;
+  //};
 
-    const highlightedText = text.split(regex).map((part, index) =>
-      index % 2 === 0 ? (
-        <span key={index}>{part}</span>
-      ) : (
+  const HighlightedText = ({ text, wordsToHighlight }) => {
+    const wordRegex = new RegExp(`\\b(${wordsToHighlight.join("|")})\\b`, "gi");
+
+    const highlightedText = text.split(wordRegex).map((part, index) => {
+      const isHighlighted = wordsToHighlight.includes(part.toLowerCase());
+      return isHighlighted ? (
         <span key={index} className="highlighted-word">
           {part}
         </span>
-      )
-    );
+      ) : (
+        <span key={index}>{part}</span>
+      );
+    });
 
     return <div className="highlighted-text">{highlightedText}</div>;
   };
+
+  const wordsToHighlightNorwegian = [
+    "Claes",
+    "strekker seg langt",
+    "talent, lidenskap og arbeidsmoral",
+    "konsekvent imponert",
+    "eksepsjonelle ferdigheter i problemløsning og å finne klare løsninger",
+    "imponerende tekniske evner",
+    "dedikert og hardtarbeidende",
+    "fortjener anerkjennelse for sine prestasjoner",
+    "en verdifull ressurs for ethvert team",
+    "en positiv innvirkning uansett hvor han går",
+    "kontroll",
+    "virkelig rydde opp i et system som hadde store utfordringer",
+    "Claes en redning",
+    "headhuntet",
+    "Jeg vil anbefale Claes Folkestad ",
+    "gjennomgående orden og struktur",
+    "rolig",
+    "for at arbeidshverdagen skal bli optimal for alle involverte",
+    "gode vesen",
+    "faglige tyngde",
+    "et godt tilskudd",
+    "en formidabel jobb",
+    "veldig organisert",
+    "til å stole på",
+    "godt likt av både kolleger og gjester",
+    "en av de mest hardtarbeidende og ansvarsfulle idealistene",
+    "sier aldri nei",
+    "initiativ",
+    "forbedre",
+    "utvikle",
+    "meget god digital kompetanse",
+    "gode tilbakemeldinger",
+    "jobbet godt både selvstendig",
+    "fleksibilitet",
+    "engasjert",
+    "ansvarlig",
+    "verdifull tillegg",
+    "utført sine arbeidsoppgaver på en meget tilfredsstillende måte",
+    "gode humør",
+    "pålitelig",
+    "flink til å ta vare på menneskene rundt seg",
+    "sosial",
+    "beste anbefalinger",
+    "utadvendt",
+    "glede å anbefale",
+    "pliktoppfyllende",
+    "hardtarbeidende",
+    "ansvarsbevisst",
+    "bidratt til et godt arbeidsmiljø",
+    "punktlig",
+    "effektiv",
+    "godt likt av kolleger samt klientell",
+    "varmeste anbefalinger",
+    "klok",
+    "tillitsverdig",
+    "fungerer bra i varierte og tidvis hektiske situasjoner",
+    "utmerket",
+    "absolutt fantastisk",
+    "engasjert",
+    "samarbeidsvillig",
+    "varmeste anbefalinger",
+  ];
 
   const wordsToHighlight = [
     "consistently impressed",
@@ -80,57 +161,10 @@ const Testimonials = ({ currentLanguage }) => {
     "warmest recommendations",
   ];
 
-  const wordsToHighlightNorwegian = [
-    "strekker seg langt",
-    "talent, lidenskap og arbeidsmoral",
-    "konsekvent imponert",
-    "eksepsjonelle ferdigheter i problemløsning og å finne klare løsninger",
-    "imponerende tekniske evner",
-    "dedikert og hardtarbeidende",
-    "en verdifull ressurs for ethvert team",
-    "en positiv innvirkning uansett hvor han går",
-    "kontroll og virkelig rydde opp i et system som hadde store utfordringer",
-    "en redning",
-    "headhuntet",
-    "Jeg vil anbefale Claes Folkestad på det sterkeste.",
-    "gjennomgående orden og struktur",
-    "rolig",
-    "formidabel",
-    "organisert",
-    "til å stole på",
-    "en av de mest hardtarbeidende og ansvarsfulle idealistene",
-    "sier aldri nei",
-    "initiativ",
-    "forbedre",
-    "utvikle",
-    "meget god digital kompetanse",
-    "fleksibilitet",
-    "engasjert",
-    "ansvarlig",
-    "verdifull tillegg",
-    "pålitelig",
-    "flink til å ta vare på menneskene rundt seg",
-    "sosial",
-    "beste anbefalinger",
-    "utadvendt",
-    "glede å anbefale",
-    "pliktoppfyllende",
-    "hardtarbeidende",
-    "ansvarsbevisst",
-    "bidratt til et godt arbeidsmiljø",
-    "punktlig",
-    "effektiv",
-    "godt likt av kolleger samt klientell",
-    "varmeste anbefalinger",
-    "klok",
-    "tillitsverdig",
-    "fungerer bra i varierte og tidvis hektiske situasjoner",
-    "utmerket måte",
-    "fantastisk",
-    "engasjert",
-    "samarbeidsvillig",
-    "varmeste anbefalinger",
-  ];
+  const handleCardTouch = (event) => {
+    const card = event.currentTarget;
+    card.classList.toggle("touched");
+  };
 
   return (
     <>
@@ -155,7 +189,15 @@ const Testimonials = ({ currentLanguage }) => {
                 {testimonials.map((testimonial) => (
                   <div
                     key={testimonial.id}
-                    className="testimonial-card rounded-lg border-2 border-b-8 border-r-8 m-4 p-4 my-2 md:p-4 h-fit md:h-auto w-full sm:w-[400px] md:hover:border-[#90d7ff] md:grayscale md:hover:grayscale-0 transition duration-1000 ease-in-out hover:scale-110 hover:greyscale-0"
+                    className="testimonial-card rounded-lg border-2 border-b-8 
+                    border-r-8 p-4 md:m-2 md:p-4 h-fit md:h-auto 
+                    w-full sm:w-1/2 md:w-[400px] hover:border-[#90d7ff]
+                     hover:bg-white hover:opacity-100 md:grayscale 
+                     md:hover:grayscale-0 transition duration-1000 
+                     ease-in-out hover:scale-110 hover:greyscale-0
+                     "
+                    onTouchStart={handleCardTouch}
+                    onTouchEnd={handleCardTouch}
                   >
                     <div className="h-32 md:h-40">
                       <img
@@ -188,6 +230,7 @@ const Testimonials = ({ currentLanguage }) => {
                         </p>
                       </span>
                     </div>
+
                     <div className="">
                       <p className=" block font-medium text-sm italic ">
                         <HighlightedText

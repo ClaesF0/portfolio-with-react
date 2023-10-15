@@ -200,21 +200,24 @@ input[type="submit"]:hover {
   transition: background-color 1.5s ease, color 1.5s ease, font-size 1.5s ease;
 }
 
+.testimonial-card:hover p {
+  line-height: 140%;
+}
+
 .testimonial-card:hover .highlighted-word {
-  font-size: 110%;
+  font-size: 105%;
   /*
   background-color: #38bdf8;
   color: white;,
   */
   background-color: orange;
-
   font-weight: bold;
-  padding: 2px 2px;
+  padding: 1px 1px;
   border-radius: 2px 3px 1px;
 
   /* Add any other styles you want for highlighted words */
 }
 
 .highlighted-word:hover {
-  font-size: 120%;
+  font-size: 115%;
 }
