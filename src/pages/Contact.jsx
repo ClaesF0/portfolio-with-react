@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from "react";
 import emailjs from "@emailjs/browser";
 import { useState } from "react";
 import { setIn } from "formik";
+import kaffebilde from "../assets/Taenkaffe.png";
 
 const Contact = ({ currentLanguage, switchLanguage }) => {
   const form = useRef(null);
@@ -139,7 +140,7 @@ const Contact = ({ currentLanguage, switchLanguage }) => {
   }, [showAlert]);
 
   return (
-    <div className="py-8">
+    <div className="py-8 ">
       <p className="text-center text-2xl mb-4">
         {currentLanguage === "english"
           ? "Coffee, chat and a handshake?"
@@ -152,11 +153,16 @@ const Contact = ({ currentLanguage, switchLanguage }) => {
       )}
 
       <div className="container mx-auto grid-cols-2 gap-4 justify-items-center  md:flex">
+        <img
+          src={kaffebilde}
+          alt=""
+          className="block md:hidden mx-auto w-1/2 h-auto"
+        />
         <form
           id="contact"
           ref={form}
           onSubmit={sendEmail}
-          className=" shadow-md rounded-md py-6 border-2 border-blue-500 col-span-1 w-2/3 bg-cover bg-center bg-no-repeat bg-opacity-90 relative mx-auto"
+          className=" shadow-md rounded-md py-6 border-2 border-blue-300 col-span-1 w-2/3 bg-cover bg-center bg-no-repeat bg-opacity-90 relative mx-auto"
           //style={{
           //  backgroundImage: `url('https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/A_small_cup_of_coffee.JPG/1280px-A_small_cup_of_coffee.JPG')`,
           //}}
@@ -261,7 +267,7 @@ const Contact = ({ currentLanguage, switchLanguage }) => {
             Send
           </button>
         </form>
-
+        <img src={kaffebilde} alt="" className="hidden md:block w-1/2 h-auto" />
         <div className="hidden col-span-1 border-2 border-red-500 rounded-md overflow-hidden">
           <img
             src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/A_small_cup_of_coffee.JPG/1280px-A_small_cup_of_coffee.JPG"
