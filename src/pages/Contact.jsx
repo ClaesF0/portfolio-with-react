@@ -233,7 +233,7 @@ const Contact = ({ currentLanguage, switchLanguage }) => {
             </div>
           </div>
 
-          <label className="mt-6 block hidden">Message</label>
+          <label className="mt-6 hidden">Message</label>
           <textarea
             color="black"
             name="message"
@@ -276,6 +276,16 @@ const Contact = ({ currentLanguage, switchLanguage }) => {
           />
         </div>
       </div>
+      <iframe
+        className="mx-auto mt-8"
+        src="https://scratch.mit.edu/projects/910826046/embed"
+        allowtransparency="true"
+        width="485"
+        height="402"
+        frameborder="0"
+        scrolling="no"
+        allowfullscreen
+      ></iframe>
     </div>
   );
 };

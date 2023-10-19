@@ -74,12 +74,18 @@ const Profile = ({ currentLanguage }) => {
               <>
                 2021-23 | Class Captain | 93/100 GPA final year. <br />{" "}
                 Pragmatic and creative. Teamplayer and people person.
+                <br />
+                Bored at work? Made a minigame recently, its on the bottom of
+                the page! ^^
               </>
             ) : (
               <>
                 2021-23 | Klasserepresentant | 93/100 poeng år 2.
                 <br />
                 Pragmatisk og kreativ lagspiller som er flink med mennesker.
+                <br />
+                Hvis du kjeder deg på jobb har jeg lagd et spill som ligger
+                nederst på sida! ^^
               </>
             )}
             <br /> <br />

@@ -85,11 +85,9 @@ const SupabaseContent = ({ currentLanguage, switchLanguage }) => {
 
   return (
     <>
-      <div className="full-width-container">
+      <div className="container">
         <div className="mt-6">
-          <p className="font-bold text-center">Tech Stack:</p>
-
-          <div className="font-extrabold text-center mt-2">
+          <div className="font-extrabold mt-2 md:w-1/2 flex">
             {techStack.map((technology, index) => {
               const icon = technologyIcons[technology];
 
