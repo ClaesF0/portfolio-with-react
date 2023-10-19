@@ -75,8 +75,11 @@ const Profile = ({ currentLanguage }) => {
                 2021-23 | Class Captain | 93/100 GPA final year. <br />{" "}
                 Pragmatic and creative. Teamplayer and people person.
                 <br />
-                Bored at work? Made a minigame recently, its on the bottom of
-                the page! ^^
+                <br />
+                <p className="text-xs">
+                  Bored at work? Made a minigame recently, its on the bottom of
+                  the page! ^^
+                </p>
               </>
             ) : (
               <>
@@ -84,8 +87,11 @@ const Profile = ({ currentLanguage }) => {
                 <br />
                 Pragmatisk og kreativ lagspiller som er flink med mennesker.
                 <br />
-                Hvis du kjeder deg på jobb har jeg lagd et spill som ligger
-                nederst på sida! ^^
+                <br />
+                <p className="text-xs">
+                  Hvis du kjeder deg på jobb har jeg lagd et spill som ligger
+                  nederst på sida! ^^
+                </p>
               </>
             )}
             <br /> <br />
