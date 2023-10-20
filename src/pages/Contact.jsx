@@ -276,7 +276,11 @@ const Contact = ({ currentLanguage, switchLanguage }) => {
           />
         </div>
       </div>
-
+      <p className="text-center text-2xl mt-4">
+        {currentLanguage === "english"
+          ? "Press the green flag to start!"
+          : "Trykk det grønne flagget for å starte!"}
+      </p>
       <iframe
         className="w-[360px] md:w-[485px] mx-auto mt-8"
         src="https://scratch.mit.edu/projects/910884058/embed"
