@@ -156,13 +156,13 @@ const Contact = ({ currentLanguage, switchLanguage }) => {
         <img
           src={kaffebilde}
           alt=""
-          className="block md:hidden mx-auto w-1/2 h-auto"
+          className="block md:hidden mx-auto w-full md:w-1/2 h-auto"
         />
         <form
           id="contact"
           ref={form}
           onSubmit={sendEmail}
-          className=" shadow-md rounded-md py-6 border-2 border-blue-300 col-span-1 w-2/3 bg-cover bg-center bg-no-repeat bg-opacity-90 relative mx-auto"
+          className=" shadow-md rounded-md py-6 border-2 border-blue-300 col-span-1 w-full md:w-2/3 bg-cover bg-center bg-no-repeat bg-opacity-90 relative mx-auto"
           //style={{
           //  backgroundImage: `url('https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/A_small_cup_of_coffee.JPG/1280px-A_small_cup_of_coffee.JPG')`,
           //}}
