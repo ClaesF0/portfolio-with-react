@@ -276,9 +276,10 @@ const Contact = ({ currentLanguage, switchLanguage }) => {
           />
         </div>
       </div>
+
       <iframe
         className="mx-auto mt-8"
-        src="https://scratch.mit.edu/projects/910826046/embed"
+        src="https://scratch.mit.edu/projects/910884058/embed"
         allowtransparency="true"
         width="485"
         height="402"
