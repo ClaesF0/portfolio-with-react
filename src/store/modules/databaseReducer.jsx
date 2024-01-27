@@ -14,6 +14,7 @@ import ReactLogo from "../../assets/react.svg";
 import HeadlessWordPressCMSLogo from "../../assets/HeadlessWordpress.psd.svg";
 import vanillaJSLogo from "../../assets/JavaScript-Logo.svg";
 import wpPluginsLogo from "../../assets/wordpressplugins.psd.svg";
+import Figmalogo from "../../assets/Figmalogo.png";
 
 const SupabaseContent = ({ currentLanguage, switchLanguage }) => {
   const [projects, setProjects] = useState([]);
@@ -22,7 +23,10 @@ const SupabaseContent = ({ currentLanguage, switchLanguage }) => {
 
   useEffect(() => {
     async function fetchData() {
-      const { data, error } = await supabase.from("Portfolio_data").select("*");
+      const { data, error } = await supabase
+        .from("Portfolio_data")
+        .select("*")
+        .order("appearance", { ascending: false });
 
       if (error) {
         console.error("Error fetching data:", error);
@@ -48,6 +52,7 @@ const SupabaseContent = ({ currentLanguage, switchLanguage }) => {
     "Headless WordPress CMS": HeadlessWordPressCMSLogo,
     "vanilla JS": vanillaJSLogo,
     "wp plugins": wpPluginsLogo,
+    Figma: Figmalogo,
   };
   /*
   const technologyIcons = {
@@ -223,19 +228,6 @@ const SupabaseContent = ({ currentLanguage, switchLanguage }) => {
                         className="inline-flex items-center px-4 py-2 text-white bg-blue-500 rounded-md hover:bg-blue-600 transition duration-300"
                       >
                         <span className="mr-2 text-white">Visit Site</span>
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          className="w-4 h-4"
-                          viewBox="0 0 20 20"
-                          fill="currentColor"
-                          aria-hidden="true"
-                        >
-                          <path
-                            fillRule="evenodd"
-                            d="M4 10a1 1 0 011-1h10a1 1 0 110 2H5a1 1 0 01-1-1zM2 9a2 2 0 012-2h12a2 2 0 012 2v2a2 2 0 01-2 2H4a2 2 0 01-2-2V9zm2-7a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V2z"
-                            clipRule="evenodd"
-                          />
-                        </svg>
                       </a>
                     </div>
                   </div>

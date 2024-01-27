@@ -26,30 +26,6 @@ const Testimonials = ({ currentLanguage }) => {
     setShowTestimonials((prevState) => !prevState);
   };
 
-  //const HighlightedText = ({ text, wordsToHighlight }) => {
-  //  const highlightedWords = wordsToHighlight.join("|");
-  //  //const regex = new RegExp(`\\b(${highlightedWords})\\b`, "gi");
-  //  const regex = new RegExp(
-  //    `\\b(${highlightedWords.replace(
-  //      /([\u0080-\uFFFF\wæøåÆØÅ]+)/gi,
-  //      "\\b$1\\b"
-  //    )})\\b`,
-  //    "gi"
-  //  );
-  //
-  //  const highlightedText = text.split(regex).map((part, index) =>
-  //    index % 2 === 0 ? (
-  //      <span key={index}>{part}</span>
-  //    ) : (
-  //      <span key={index} className="highlighted-word">
-  //        {part}
-  //      </span>
-  //    )
-  //  );
-  //
-  //  return <div className="highlighted-text">{highlightedText}</div>;
-  //};
-
   const HighlightedText = ({ text, wordsToHighlight }) => {
     const wordRegex = new RegExp(`\\b(${wordsToHighlight.join("|")})\\b`, "gi");
 
