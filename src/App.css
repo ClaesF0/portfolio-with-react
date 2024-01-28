@@ -205,16 +205,18 @@ input[type="submit"]:hover {
 }
 
 .testimonial-card:hover .highlighted-word {
-  font-size: 105%;
+  font-size: 100%;
   /*
   background-color: #38bdf8;
   color: white;,
   */
-  background-color: orange;
-  font-weight: bold;
+  background-color: rgb(255, 238, 0);
   padding: 1px 1px;
-  border-radius: 2px 3px 1px;
-
+  border-radius: 2px 3px 1.5px;
+  margin-left: -3px;
+  margin-right: -3px;
+  transform: rotate(2deg);
+  border-radius: 20% 25% 20% 24%;
   /* Add any other styles you want for highlighted words */
 }
 
