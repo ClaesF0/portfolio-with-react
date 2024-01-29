@@ -15,6 +15,7 @@ import HeadlessWordPressCMSLogo from "../../assets/HeadlessWordpress.psd.svg";
 import vanillaJSLogo from "../../assets/JavaScript-Logo.svg";
 import wpPluginsLogo from "../../assets/wordpressplugins.psd.svg";
 import Figmalogo from "../../assets/Figmalogo.png";
+import Wixlogo from "../../assets/Wixlogo.png";
 
 const SupabaseContent = ({ currentLanguage, switchLanguage }) => {
   const [projects, setProjects] = useState([]);
@@ -53,24 +54,8 @@ const SupabaseContent = ({ currentLanguage, switchLanguage }) => {
     "vanilla JS": vanillaJSLogo,
     "wp plugins": wpPluginsLogo,
     Figma: Figmalogo,
+    Wix: Wixlogo,
   };
-  /*
-  const technologyIcons = {
-    Wordpress: "./src/assets/wordpress_logo.svg",
-    FileZilla: "./src/assets/FileZilla_logo.svg.png",
-    Flywheel: "./src/assets/flywheel_logo.svg",
-    PHP: "./src/assets/PHP-logo.svg.png",
-    HTML: "./src/assets/HTML5_logo_and_wordmark.svg.png",
-    CSS: "./src/assets/CSS3_logo_and_wordmark.svg.png",
-    TailwindCSS: "./src/assets/Tailwind_CSS_logo.svg.png",
-    woocommerce: "./src/assets/woo-logo.png",
-    Vite: "./src/assets/vite.svg",
-    React: "./src/assets/react.svg",
-    "Headless WordPress CMS": "./src/assets/HeadlessWordpress.psd.svg",
-    "vanilla JS": "./src/assets/JavaScript-Logo.svg",
-    "wp plugins": "./src/assets/wordpressplugins.psd.svg",
-  };
-*/
 
   const toggleSummary = () => {
     setShowLongSummary((prevState) => !prevState);
@@ -92,12 +77,12 @@ const SupabaseContent = ({ currentLanguage, switchLanguage }) => {
     <>
       <div className="container">
         <div className="mt-6">
-          <div className="font-extrabold mt-2 md:w-1/2 flex">
+          <div className="font-extrabold mt-2 ">
             {techStack.map((technology, index) => {
               const icon = technologyIcons[technology];
 
               return (
-                <div className="inline-flex place-items-baseline  ">
+                <div className="inline-block place-items-baseline  ">
                   <img
                     key={index}
                     src={icon}
@@ -137,12 +122,12 @@ const SupabaseContent = ({ currentLanguage, switchLanguage }) => {
                     <img
                       src={project.preview_img}
                       alt={`Image for the project ${project.title}`}
-                      className="h-auto object-cover p-6 md:p-0 rounded-lg "
+                      className="w-[800px] object-cover py-2 lg:p-6 md:p-0 rounded-lg "
                     />
                   </a>
 
                   <div
-                    className={`mx-auto text-sm md:w-1/2 p-6 md:p-8 pt-0 md:pt-4 text-left md:ml-8 rounded-lg ${
+                    className={`mx-auto text-sm md:w-1/2 p-6 md:p-8 pt-0 text-left md:ml-8 rounded-lg ${
                       index % 2 === 0
                         ? "text-[#181415] text-xs bg-[#f8f8f8] "
                         : "text-[#181415]  text-xs bg-[#f8f8f8]"

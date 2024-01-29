@@ -22,17 +22,20 @@ function resumeDownloadLanguage() {}
 const Profile = ({ currentLanguage }) => {
   return (
     <>
-      <div id="about" className="container lg:px-40">
-        <div className="image-container block md:flex justify-around md:justify-evenly mx-auto py-6 ">
-          <div className="container text-md md:text-xl">
+      <div id="about" className="container ">
+        <div className="image-container block md:flex justify-between md:justify-evenly ">
+          <div className="text-md md:text-xl">
             <p className="font-bold">
               Claes Folkestad, {age()},{" "}
               {currentLanguage === "english"
                 ? "Front End Graduate"
                 : "nylig uteksaminert Front End Utvikler"}
             </p>
+            <p className="invisible text-xs">
+              Pragmatisk og kreativ lagspiller som er flink med mennesker.
+            </p>
             <br />
-            📍 {currentLanguage === "english" ? "Oslo, Norway" : "Oslo"} ||{" "}
+            📍 {currentLanguage === "english" ? "Oslo, Norway" : "Oslo"} |{" "}
             <a
               href="https://www.linkedin.com/in/claes-folkestad-824115224/"
               target="_blank"

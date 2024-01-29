@@ -194,12 +194,8 @@ const Testimonials = ({ currentLanguage }) => {
     const card = event.currentTarget;
     card.classList.toggle("touched");
   };
-
-  return (
-    <>
-      <div id="references" className="container my-8">
-        <p className="text-center text-2xl">References:</p>
-        <button onClick={toggleTestimonials} className="text-sm">
+  /* 
+          <button onClick={toggleTestimonials} className="text-sm">
           {showTestimonials ? (
             <p className="text-sm bg-[#90d7ff] p-2 border-2 border-black rounded-lg text-black">
               View references
@@ -210,6 +206,13 @@ const Testimonials = ({ currentLanguage }) => {
             </p>
           )}
         </button>
+  */
+
+  return (
+    <>
+      <div id="references" className="container my-8">
+        <p className="text-center text-2xl">References:</p>
+
         {!showTestimonials && (
           <>
             <div className="text-lg text-gray-700">
