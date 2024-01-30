@@ -95,6 +95,7 @@ const Testimonials = ({ currentLanguage }) => {
     "punktlig",
     "effektiv",
     "optimal",
+    "tar utfordringer på strak arm",
     "positiv atmosfære",
     "veldig godt likt",
     "godt likt",
