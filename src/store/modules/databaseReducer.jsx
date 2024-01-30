@@ -77,17 +77,17 @@ const SupabaseContent = ({ currentLanguage, switchLanguage }) => {
     <>
       <div className="container">
         <div className="mt-6">
-          <div className="font-extrabold mt-2 ">
+          <div className="font-extrabold mt-2 flex flex-wrap justify-center md:justify-between">
             {techStack.map((technology, index) => {
               const icon = technologyIcons[technology];
 
               return (
-                <div className="inline-block place-items-baseline  ">
+                <div className="flex items-center m-1 ">
                   <img
                     key={index}
                     src={icon}
                     alt={`${technology}`}
-                    className="h-10 m-3 inline-block"
+                    className="h-8 p-1 md:h-10"
                   />{" "}
                   <p className="hidden">{technology}</p>
                 </div>
@@ -97,22 +97,14 @@ const SupabaseContent = ({ currentLanguage, switchLanguage }) => {
         </div>
 
         <>
-          <p id="projects" className="text-center text-2xl mt-4">
-            Projects:
-          </p>
           {projects.map((project, index) => (
             <div key={project.id}>
-              <div
-                className={` mt-2 mx-auto  ${
-                  index % 2 === 0
-                    ? "md:flex md:flex-row md:bg-[#90d6ff8d] md:bg-opacity-10 w-[100%]"
-                    : "md:flex md:flex-row-reverse "
-                }`}
-                style={{
-                  backgroundColor: index % 2 === 0 ? "#90d7ff" : "", // Set background color dynamically
-                }}
-              >
-                <div className="container md:flex py-8">
+              <div className="my-12">
+                <div
+                  className={` my-12 md:flex justify-evenly ${
+                    index % 2 === 0 ? " md:flex-row-reverse" : " md:flex-row"
+                  }`}
+                >
                   <a
                     href={project.deployed_url}
                     target="_blank"
@@ -122,21 +114,27 @@ const SupabaseContent = ({ currentLanguage, switchLanguage }) => {
                     <img
                       src={project.preview_img}
                       alt={`Image for the project ${project.title}`}
-                      className="w-[800px] object-cover py-2 lg:p-6 md:p-0 rounded-lg "
+                      className="w-full object-cover md:p-0 rounded-lg "
                     />
                   </a>
 
                   <div
-                    className={`mx-auto text-sm md:w-1/2 p-6 md:p-8 pt-0 text-left md:ml-8 rounded-lg ${
-                      index % 2 === 0
-                        ? "text-[#181415] text-xs bg-[#f8f8f8] "
-                        : "text-[#181415]  text-xs bg-[#f8f8f8]"
+                    className={` mx-auto text-sm md:w-1/2 py-6  pt-0 text-left rounded-lg  ${
+                      index % 2 === 0 ? " md:pr-8" : "  md:px-8"
                     }`}
                   >
-                    <p className="p-4 text-xl font-extrabold text-center">
-                      {project.title}
-                    </p>
-                    <div className="mb-4">
+                    {" "}
+                    <a
+                      href={project.deployed_url}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="text-[#0000EE]"
+                    >
+                      <p className="pb-2 text-xl font-extrabold ">
+                        {project.title}
+                      </p>
+                    </a>
+                    <div className="mb-4 w-full">
                       {showLongSummary ? (
                         currentLanguage === "english" ? (
                           <p>{project.description_english}</p>
@@ -151,23 +149,21 @@ const SupabaseContent = ({ currentLanguage, switchLanguage }) => {
                     </div>
                     <button
                       onClick={toggleSummary}
-                      className="border-2 border-gray-600 text-gray-600 bg-slate-50 rounded-md p-2 "
+                      className=" text-gray-600 font-semibold py-1 hover:italic"
                     >
                       {showLongSummary ? (
                         currentLanguage === "english" ? (
-                          <p>Short & sweet</p>
+                          <p>Short summary</p>
                         ) : (
                           <p>Kort oppsummering</p>
                         )
                       ) : currentLanguage === "english" ? (
-                        <p>More details</p>
+                        <p>More details?</p>
                       ) : (
-                        <p>Mer detaljer</p>
+                        <p>Mer detaljer?</p>
                       )}
                     </button>
-
-                    <p className="font-extrabold text-left mt-2">Tech stack:</p>
-                    <div className="font-extrabold text-left mt-2">
+                    <div className="text-left mt-2">
                       {project.tech_stack
                         .split(", ")
                         .map((technology, index) => {
@@ -178,41 +174,27 @@ const SupabaseContent = ({ currentLanguage, switchLanguage }) => {
                               key={index}
                               src={icon}
                               alt={`Icon for ${technology}`}
-                              className="h-8 m-1 inline-block "
+                              className="h-8 px-1 inline-block "
                             />
                           );
                         })}
                     </div>
-
-                    <div className="flex justify-center space-x-4 mt-4">
+                    <div className="space-x-2 mt-2">
                       <a
                         href={project.repo_url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center px-4 py-2 text-gray-800 bg-gray-100 rounded-md hover:bg-gray-200 transition duration-300"
+                        className=" text-[#0000EE] "
                       >
                         <span className="mr-2">Github repo</span>
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          className="w-4 h-4"
-                          viewBox="0 0 20 20"
-                          fill="currentColor"
-                          aria-hidden="true"
-                        >
-                          <path
-                            fillRule="evenodd"
-                            d="M8 2a1 1 0 0 1 1 1v3.586l2.293-2.293a1 1 0 1 1 1.414 1.414L9.414 9l2.293 2.293a1 1 0 0 1-1.414 1.414L9 10.414V14a1 1 0 1 1-2 0V3a1 1 0 0 1 1-1zm10 8a1 1 0 0 0-1-1h-3.586l2.293-2.293a1 1 0 1 0-1.414-1.414L11 9.586L8.707 7.293a1 1 0 0 0-1.414 1.414L9.586 11H6a1 1 0 0 0 0 2h11a1 1 0 0 0 1-1zm-6 6a1 1 0 0 1-1-1v-3.586l-2.293 2.293a1 1 0 1 1-1.414-1.414L9.414 11l-2.293-2.293a1 1 0 0 1 1.414-1.414L11 10.414V7a1 1 0 1 1 2 0v11a1 1 0 0 1-1 1z"
-                            clipRule="evenodd"
-                          />
-                        </svg>
                       </a>
                       <a
                         href={project.deployed_url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center px-4 py-2 text-white bg-blue-500 rounded-md hover:bg-blue-600 transition duration-300"
+                        className="text-[#0000EE]"
                       >
-                        <span className="mr-2 text-white">Visit Site</span>
+                        <span className="mr-2">Deployed Site</span>
                       </a>
                     </div>
                   </div>

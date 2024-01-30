@@ -108,7 +108,6 @@ const Testimonials = ({ currentLanguage }) => {
     "lære veldig raskt",
     "tilpasningsdyktighet",
     "samarbeidsvillig",
-    "samarbeid",
     "samarbeide",
     "ryddig",
     "viktig lagspiller",

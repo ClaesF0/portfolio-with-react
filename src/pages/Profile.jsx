@@ -23,9 +23,9 @@ const Profile = ({ currentLanguage }) => {
   return (
     <>
       <div id="about" className="container ">
-        <div className="image-container block md:flex justify-between md:justify-evenly ">
+        <div className="image-container block md:flex justify-between md:justify-between">
           <div className="text-md md:text-xl">
-            <p className="font-bold">
+            <p className="font-bold mt-6">
               Claes Folkestad, {age()},{" "}
               {currentLanguage === "english"
                 ? "Front End Graduate"
@@ -97,20 +97,13 @@ const Profile = ({ currentLanguage }) => {
                 </p>
               </>
             )}
-            <br /> <br />
-            <br /> <br />
           </div>
 
-          <div className="image-overlay"></div>
           <img
             src={profileImage}
-            alt="Somewhat crudely cropped picture of Claes smiling, but with an added funny stick-hand raising a simplistic tophat."
-            className="profile-image bg-[#90d7ff] w-[200px] md:w-[300px] h-auto mx-auto -z-50"
+            alt=""
+            className="profile-image w-[200px] md:w-[300px] h-auto -z-50 md:mr-8 mt-0 md:mt-8 mx-auto"
           />
-          <div
-            className="text-md sm:text-xl md:text-2xl font-bold sm:text-right md:right-3 md:absolute text-[#90d7ff]"
-            style={{ fontFamily: "Consolas" }}
-          ></div>
         </div>
       </div>
     </>
