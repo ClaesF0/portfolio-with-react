@@ -15,7 +15,7 @@ import HeadlessWordPressCMSLogo from "../../assets/HeadlessWordpress.psd.svg";
 import vanillaJSLogo from "../../assets/JavaScript-Logo.svg";
 import wpPluginsLogo from "../../assets/wordpressplugins.psd.svg";
 import Figmalogo from "../../assets/Figmalogo.png";
-import Wixlogo from "../../assets/Wixlogo.png";
+import Wixlogo from "../../assets/wixlogo.png";
 
 const SupabaseContent = ({ currentLanguage, switchLanguage }) => {
   const [projects, setProjects] = useState([]);
