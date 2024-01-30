@@ -248,16 +248,16 @@ const Testimonials = ({ currentLanguage }) => {
           <>
             <div className="text-lg text-gray-700">
               <br />
-              <div className="text-md text-gray-700 inline-flex flex-wrap justify-evenly ">
+              <div className="text-md text-gray-700 inline-flex flex-wrap justify-between ">
                 {testimonials.map((testimonial) => (
                   <div
                     key={testimonial.id}
                     className="testimonial-card rounded-lg border-2 border-b-8 
-                    border-r-8 p-4 md:m-2 md:p-4 h-fit md:h-auto 
-                    w-full sm:w-1/2 md:w-[400px] hover:border-[#90d7ff]
+                    border-r-8 h-fit md:h-auto 
+                    w-full sm:w-1/2 md:w-[49%] p-[33px] md:p-[66px] md:mb-7 hover:border-[#90d7ff]
                      hover:bg-white hover:opacity-100 md:grayscale 
                      md:hover:grayscale-0 transition duration-1000 
-                     ease-in-out hover:scale-110 hover:greyscale-0
+                     ease-in-out hover:scale-110 hover:greyscale-0 hover:z-10
                      "
                     onTouchStart={handleCardTouch}
                     onTouchEnd={handleCardTouch}

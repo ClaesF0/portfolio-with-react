@@ -128,7 +128,7 @@ const SupabaseContent = ({ currentLanguage, switchLanguage }) => {
                       href={project.deployed_url}
                       target="_blank"
                       rel="noreferrer"
-                      className="text-[#0000EE]"
+                      className="text-[#38bdf8]"
                     >
                       <p className="pb-2 text-xl font-extrabold ">
                         {project.title}
