@@ -105,6 +105,31 @@ const Profile = ({ currentLanguage }) => {
             className="profile-image w-[200px] md:w-[300px] h-auto -z-50 md:mr-8 mt-0 md:mt-8 mx-auto"
           />
         </div>
+        <div className="stats-overview-images  ">
+          <div className="flex flex-wrap justify-between">
+            <div className="flex flex-col justify-center items-center">
+              <img
+                src="https://github-readme-stats.vercel.app/api?username=ClaesF0&theme=default&show_icons=true&hide_border=true&count_private=true"
+                alt=""
+                className="h-30"
+              />
+            </div>
+            <div className="flex flex-col justify-center items-center">
+              <img
+                src="https://github-readme-stats.vercel.app/api/top-langs/?username=ClaesF0&theme=default&show_icons=true&hide_border=true&layout=compact"
+                alt=""
+                className="h-30"
+              />
+            </div>
+            <div className="flex flex-col justify-center items-center">
+              <img
+                src="https://github-readme-streak-stats.herokuapp.com/?user=ClaesF0&theme=default&hide_border=true "
+                alt=""
+                className="h-30"
+              />
+            </div>
+          </div>
+        </div>
       </div>
     </>
   );

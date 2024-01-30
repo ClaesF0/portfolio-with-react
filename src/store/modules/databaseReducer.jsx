@@ -134,6 +134,40 @@ const SupabaseContent = ({ currentLanguage, switchLanguage }) => {
                         {project.title}
                       </p>
                     </a>
+                    <div className="text-left mt-2">
+                      {project.tech_stack
+                        .split(", ")
+                        .map((technology, index) => {
+                          const icon = technologyIcons[technology.trim()];
+
+                          return (
+                            <img
+                              key={index}
+                              src={icon}
+                              alt={`Icon for ${technology}`}
+                              className="h-8 px-1 inline-block "
+                            />
+                          );
+                        })}
+                    </div>
+                    <div className="space-x-2 my-2">
+                      <a
+                        href={project.repo_url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className=" text-[#0000EE] "
+                      >
+                        <span className="mr-2">Github repo</span>
+                      </a>
+                      <a
+                        href={project.deployed_url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-[#0000EE]"
+                      >
+                        <span className="mr-2">Deployed Site</span>
+                      </a>
+                    </div>
                     <div className="mb-4 w-full">
                       {showLongSummary ? (
                         currentLanguage === "english" ? (
@@ -163,40 +197,6 @@ const SupabaseContent = ({ currentLanguage, switchLanguage }) => {
                         <p>Mer detaljer?</p>
                       )}
                     </button>
-                    <div className="text-left mt-2">
-                      {project.tech_stack
-                        .split(", ")
-                        .map((technology, index) => {
-                          const icon = technologyIcons[technology.trim()];
-
-                          return (
-                            <img
-                              key={index}
-                              src={icon}
-                              alt={`Icon for ${technology}`}
-                              className="h-8 px-1 inline-block "
-                            />
-                          );
-                        })}
-                    </div>
-                    <div className="space-x-2 mt-2">
-                      <a
-                        href={project.repo_url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className=" text-[#0000EE] "
-                      >
-                        <span className="mr-2">Github repo</span>
-                      </a>
-                      <a
-                        href={project.deployed_url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-[#0000EE]"
-                      >
-                        <span className="mr-2">Deployed Site</span>
-                      </a>
-                    </div>
                   </div>
                 </div>
               </div>
