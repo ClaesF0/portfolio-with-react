@@ -118,7 +118,7 @@ const Profile = ({ currentLanguage }) => {
               <img
                 src="https://github-readme-stats.vercel.app/api/top-langs/?username=ClaesF0&theme=default&show_icons=true&hide_border=true&layout=compact"
                 alt=""
-                className="h-30"
+                className="h-[195px]"
               />
             </div>
             <div className="flex flex-col justify-center items-center">
