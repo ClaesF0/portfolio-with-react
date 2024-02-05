@@ -24,7 +24,7 @@ const Navbar = ({ currentLanguage, switchLanguage }) => {
   };
 
   return (
-    <div className=" w-full h-16 sticky top-0 z-10 text-[#38bdf8]  ">
+    <div className=" w-full h-16  py-2 sticky top-0 z-10 text-[#38bdf8]  bg-[#f8f8f8] border-b-2 border-gray-300">
       <div
         className={`hambar ${
           hamburgerOpen
@@ -34,10 +34,10 @@ const Navbar = ({ currentLanguage, switchLanguage }) => {
       >
         <ul
           className={`${
-            hamburgerOpen ? "block" : "hidden"
-          } container md:flex flex-wrap justify-between text-xl md:w-screen h-1/2 top-8 border-b-2 py-4 border-black`}
+            hamburgerOpen ? "block border-b-2 bg-gray-500 top-4" : "hidden"
+          } container md:flex flex-wrap justify-between text-xl md:w-screen`}
         >
-          <li className="">
+          <li className="menuLink">
             <a
               href="
                 #about"
@@ -46,7 +46,7 @@ const Navbar = ({ currentLanguage, switchLanguage }) => {
               {currentLanguage === "english" ? "About" : "Om meg"}
             </a>
           </li>
-          <li className="">
+          <li className="menuLink">
             <a
               href="
                 #projects"
@@ -55,7 +55,7 @@ const Navbar = ({ currentLanguage, switchLanguage }) => {
               {currentLanguage === "english" ? "Projects" : "Prosjekter"}
             </a>
           </li>
-          <li className="">
+          <li className="menuLink">
             <a
               href="
                 #references"
@@ -64,7 +64,7 @@ const Navbar = ({ currentLanguage, switchLanguage }) => {
               {currentLanguage === "english" ? "Testimonials" : "Referanser"}
             </a>
           </li>
-          <li className="">
+          <li className="menuLink">
             <a
               href="
                 #contact"
@@ -73,7 +73,7 @@ const Navbar = ({ currentLanguage, switchLanguage }) => {
               {currentLanguage === "english" ? "Contact me" : "Ta kontakt"}
             </a>
           </li>
-          <li className="">
+          <li className="menuLink">
             <a
               href={resume}
               target="_blank"
@@ -83,7 +83,7 @@ const Navbar = ({ currentLanguage, switchLanguage }) => {
               {currentLanguage === "english" ? "Resume" : "CV"}
             </a>
           </li>
-          <li className="">
+          <li className="menuLink">
             <a
               href="
             https://www.linkedin.com/in/claes-folkestad-824115224/"
@@ -94,7 +94,7 @@ const Navbar = ({ currentLanguage, switchLanguage }) => {
               <img style={{ width: "30px" }} src={linkedin} alt="" />
             </a>
           </li>
-          <li className="">
+          <li className="menuLink">
             <a
               href="https://www.github.com/claesF0"
               target="_blank"
@@ -104,21 +104,21 @@ const Navbar = ({ currentLanguage, switchLanguage }) => {
               <img style={{ height: "30px" }} src={github} alt="" />
             </a>
           </li>
-          <li>
+          <li className="menuLink">
             <button
-              className="mx-2 hidden md:relative md:flex md:items-center top-0 right-0 text-2xl"
+              className="hidden md:relative md:flex md:items-center top-0 right-0 text-3xl"
               onClick={switchLanguage}
             >
               {currentLanguage === "english" ? "🇳🇴" : "🇬🇧"}
             </button>
           </li>
         </ul>
-
-        <div className="hamburger" onClick={toggleHamburger}>
+        <div className="hamburger " onClick={toggleHamburger}>
           <Hamburger isOpen={hamburgerOpen} />
         </div>
+
         <button
-          className="mx-2 absolute md:hidden top-0 right-0 text-3xl"
+          className="mx-2 absolute md:hidden top-2 right-2 text-3xl "
           onClick={switchLanguage}
         >
           {currentLanguage === "english" ? "🇳🇴" : "🇬🇧"}
@@ -128,7 +128,7 @@ const Navbar = ({ currentLanguage, switchLanguage }) => {
       <style jsx>
         {`
           .navbar ul {
-            display: ${hamburgerOpen ? "inline" : ""};
+            display: ${hamburgerOpen ? "inline " : ""};
           }
         `}
       </style>

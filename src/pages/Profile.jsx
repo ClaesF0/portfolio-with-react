@@ -25,7 +25,7 @@ const Profile = ({ currentLanguage }) => {
       <div id="about" className="container ">
         <div className="image-container block md:flex justify-between md:justify-between">
           <div className="text-md md:text-xl">
-            <p className="font-bold mt-6">
+            <p className="font-bold md:mt-6">
               Claes Folkestad, {age()},{" "}
               {currentLanguage === "english"
                 ? "Front End Graduate"

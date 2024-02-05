@@ -76,7 +76,8 @@ const SupabaseContent = ({ currentLanguage, switchLanguage }) => {
   return (
     <>
       <div className="container">
-        <div className="mt-6">
+        <hr></hr>
+        <div className="my-6">
           <div className="font-extrabold mt-2 flex flex-wrap justify-center md:justify-between">
             {techStack.map((technology, index) => {
               const icon = technologyIcons[technology];
@@ -99,7 +100,8 @@ const SupabaseContent = ({ currentLanguage, switchLanguage }) => {
         <>
           {projects.map((project, index) => (
             <div key={project.id}>
-              <div className="my-12">
+              <div className="mb-12">
+                <hr></hr>
                 <div
                   className={` my-12 md:flex justify-evenly ${
                     index % 2 === 0 ? " md:flex-row-reverse" : " md:flex-row"
@@ -119,8 +121,8 @@ const SupabaseContent = ({ currentLanguage, switchLanguage }) => {
                   </a>
 
                   <div
-                    className={` mx-auto text-sm md:w-1/2 py-6  pt-0 text-left rounded-lg  ${
-                      index % 2 === 0 ? " md:pr-8" : "  md:px-8"
+                    className={`  mx-auto text-sm md:w-1/2 p-8 md:pl-0 md:py-6  pt-0 text-left rounded-lg  ${
+                      index % 2 === 0 ? " md:pr-8 " : "  md:pl-8 "
                     }`}
                   >
                     {" "}
@@ -130,11 +132,11 @@ const SupabaseContent = ({ currentLanguage, switchLanguage }) => {
                       rel="noreferrer"
                       className="text-[#38bdf8]"
                     >
-                      <p className="pb-2 text-xl font-extrabold ">
+                      <p className="py-2 text-xl text-center md:text-left font-extrabold ">
                         {project.title}
                       </p>
                     </a>
-                    <div className="text-left mt-2">
+                    <div className="text-left my-2">
                       {project.tech_stack
                         .split(", ")
                         .map((technology, index) => {
@@ -145,12 +147,12 @@ const SupabaseContent = ({ currentLanguage, switchLanguage }) => {
                               key={index}
                               src={icon}
                               alt={`Icon for ${technology}`}
-                              className="h-8 px-1 inline-block "
+                              className="h-8 pr-1 my-2 inline-block "
                             />
                           );
                         })}
                     </div>
-                    <div className="space-x-2 my-2">
+                    <div className="space-x-2 py-2">
                       <a
                         href={project.repo_url}
                         target="_blank"
@@ -168,7 +170,7 @@ const SupabaseContent = ({ currentLanguage, switchLanguage }) => {
                         <span className="mr-2">Deployed Site</span>
                       </a>
                     </div>
-                    <div className="mb-4 w-full">
+                    <div className="my-4 w-full">
                       {showLongSummary ? (
                         currentLanguage === "english" ? (
                           <p>{project.description_english}</p>
@@ -194,7 +196,7 @@ const SupabaseContent = ({ currentLanguage, switchLanguage }) => {
                       ) : currentLanguage === "english" ? (
                         <p>More details?</p>
                       ) : (
-                        <p>Mer detaljer?</p>
+                        <p>Flere detaljer?</p>
                       )}
                     </button>
                   </div>
